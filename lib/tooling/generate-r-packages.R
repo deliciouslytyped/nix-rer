@@ -12,7 +12,7 @@ mirrorUrls <- list( bioc=paste0("http://bioconductor.statistik.tu-dortmund.de/pa
                   , cran=paste0("http://mran.revolutionanalytics.com/snapshot/", snapshotDate, "/src/contrib/")
                   )
 
-mirrorType <- commandArgs(trailingOnly=TRUE)[1]
+mirrorType <- "cran"# commandArgs(trailingOnly=TRUE)[1]
 stopifnot(mirrorType %in% names(mirrorUrls))
 packagesFile <- paste(mirrorType, 'packages.nix', sep='-')
 readFormatted <- as.data.table(read.table(skip=8, sep='"', text=head(readLines(packagesFile), -1)))
