@@ -1,9 +1,14 @@
 {
+  "comments" : [
+    "#snapshotDate <- Sys.Date() - 1 #TODO i dont like that this is set here but the other value is loaded from the database",
+    "add semver thing"
+  ],
   "mirrors" : {
   "bioc" : "http://bioconductor.statistik.tu-dortmund.de/packages/%1$s/bioc/src/contrib/",
   "bioc-annotation" : "http://bioconductor.statistik.tu-dortmund.de/packages/%1$s/data/annotation/src/contrib",
   "bioc-experiment" : "http://bioconductor.statistik.tu-dortmund.de/packages/%1$s/data/experiment/src/contrib/",
   "cran" : "http://mran.revolutionanalytics.com/snapshot/%2$s/src/contrib/"
   },
-  "biocVersion" : "3.8"
+  "biocVersion" : "3.8",
+  "snapshotDate" : "2019-07-02"
 }
