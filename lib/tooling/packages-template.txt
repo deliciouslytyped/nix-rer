@@ -1,7 +1,7 @@
 # This file is generated from generate-r-packages.R. DO NOT EDIT.
-# Execute the following command to update the file. (It will be wrong if this file was generated in interactive mode.)
+# Execute the following command to update the file: (It will be wrong if this file was generated with an interactive REPL.)
 #
-# Rscript generate-r-packages.R %1$s >new && mv new %2$s
+# %1$s >new && mv new %2$s
 
 { self, derive }:
   let derive2 = derive { %3$s };

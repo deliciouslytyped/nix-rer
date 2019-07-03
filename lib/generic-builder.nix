@@ -2,7 +2,13 @@
 { stdenv, R, libcxx, xvfb_run, utillinux, Cocoa, Foundation, gettext, gfortran }:
 
 { name, buildInputs ? [], requireX ? false, ... } @ attrs:
-
+let
+  wrapHook = p: s: ''
+    runHook pre${p}
+    ${s}
+    runHook post${p}
+    ''
+in
 stdenv.mkDerivation ({
   buildInputs = buildInputs ++ [R gettext] ++
                 stdenv.lib.optionals requireX [utillinux xvfb_run] ++
@@ -17,10 +23,7 @@ stdenv.mkDerivation ({
     runHook postConfigure
   '';
 
-  buildPhase = ''
-    runHook preBuild
-    runHook postBuild
-  '';
+  buildPhase = wrapHook "Build";
 
   installFlags = if attrs.doCheck or true then
     []
@@ -34,11 +37,9 @@ stdenv.mkDerivation ({
   else
     "R";
 
-  installPhase = ''
-    runHook preInstall
+  installPhase = wrapHook "Install" ''
     mkdir -p $out/library
     $rCommand CMD INSTALL $installFlags --configure-args="$configureFlags" -l $out/library .
-    runHook postInstall
   '';
 
   postFixup = ''
@@ -47,7 +48,7 @@ stdenv.mkDerivation ({
     fi
   '';
 
-  checkPhase = ''
+  checkPhase = '' #TODO can I null this
     # noop since R CMD INSTALL tests packages
   '';
 } // attrs // {

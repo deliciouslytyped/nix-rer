@@ -1,9 +1,14 @@
+#TODO cross mode cache?
+#TODO should I just scrap this whole thing, dump to json, and add the hash adding step?
+#TODO go back through r issues filed in nixpkgs and related commits and see if i still address them
+#TODO create a generalized tooling pipeline shceme for this 
+
+#nix format support is for interim backwards compatibility and verification, the json format is now the preferred version
 #Ghidra needed a plugins argument because the files had to be part of the derivation, r has rwrapper because env vars suffice. how should i integrate this into rootedoverlay?
 
 #Docu: r-pkgs.had.co.nz/description.html - consider writing somehting in Nix for the debian control format?
 # use dcf stuff?: https://stat.ethz.ch/R-manual/R-devel/RHOME/library/tools/html/writePACKAGES.html
 # !!!! probably should use https://github.com/r-lib/desc
-#lst <- loadMirrorList(); m <- chooseMirror("cran", lst); ww <- getManifests(m, lst); xxx <- genNix(m, Sys.Date()-1, "3.8", ww$these[1:10,], ww$known) ; cat(xxx)
 #TODO consider ifelse in parts (how is it different from if expressions?)
 # ! https://github.com/r-lib/desc/blob/c860e7b2c42a00e43195d86215b081a2dac1805a/R/deps.R#L82
 #TODO generator wrapper script: since we query the environment we need to use the proper version of r to generate things? -> TODO document what parts of the env we query, so far its just this?
@@ -47,12 +52,23 @@ readFile <- function(fileName){
 ##########################################3
 
 #main function
-generateDB <- function(mirror){
-  commandArgs(trailingOnly=TRUE) %>%
-    chooseMirror(loadMirrorList()) %>%
-    getManifests(mirrors) %>% 
-    addHashes(mirror) %>%
-    writeDB(mode="nix")
+#lst <- loadMirrorList(); m <- chooseMirror(c("","cran"), lst); ww <- getManifests(m, lst); xxx <- genNix(m, ww$these[1:1,], ww$known, "cran-packages.nix") ; cat(xxx)
+generateDB <- function(){
+  #commandArgs() %>%
+  #  chooseMirror(loadMirrorList()) %>%
+  #  getManifests(mirrors) %>% 
+  #  addHashes(mirror) %>% #TODO map over getmanifests
+  #  writeDB(mode="nix")
+
+  mode <- "nix"
+  commandLine <- c("", "cran")
+  
+  mirrors <- loadMirrorList()
+  mirror <- chooseMirror(commandLine, mirrors)
+  packagesFile <- sprintf("%s/%s-packages.%s", sourceDir, mirror$name, mode) #TODO change dir
+  pkgs <- getManifests(mirror, mirrors) #TODO this looks weird because youd think getmanifests should be getmanifest and only needs to look at one package set instead of theentire mirrors structure. the question is how do names interact across r package sets?
+  result <- genNix(mirror, pkgs$these, pkgs$known, packagesFile)
+  write(result, packagesFile) #TODO periodic update so you can interrupt it
 }
 
 #Load mirror tuples from file
@@ -64,7 +80,7 @@ loadMirrorList <- function(){
 
 #process commandline args
 chooseMirror <- function(args, data){
-  mirrorName <- args[1]
+  mirrorName <- args[[2]]
   stopifnot(mirrorName %in% names(data$mirrors))
   #TODO haven't thought of a non-awkward way to handle $version that doesn't make the code a lot bigger
   list(name=mirrorName, url=data$mirrors[[mirrorName]], version=ifelse(mirrorName == "cran", data$snapshotDate, data$biocVersion))
@@ -72,26 +88,28 @@ chooseMirror <- function(args, data){
 
 #TODO split knownpackages pipeline (is it even necessary) and the remote stuff
 #TODO what is the relationship between pkgs and knownpackages
+#TODO split this into a map-able over package sets updater and make it just generate everyhting (+ choice)
 getManifests <- function(mirror, data){ #TODO
   write(paste("downloading package lists"), stderr())
   #TODO why are you downloading them all if you only use one? (or does it actually use more than one?) <- i.e. knownpackages
   #TODO rbind these here into knwnpackages and do the filter to a column afterwards?
   l <- function(url) as.data.table(available.packages(url, filters=c("R_version", "OS_type", "duplicates"), method="libcurl"))
   allPackages <- lapply(data$mirrors, l)
-  
-  thesePkgs <- allPackages[[mirror$name]][order(Package)] #data.table magic, knows Package is a column of...
-  setkey(thesePkgs, Package) #this makes no sense...?
-  
   knownPackages <- unique(rbindlist(allPackages)$Package) #maybe knownpackages shouldnt look at the global set?, how can we hadle individual package sets on the nix side if yet
   
-  list(allPackages = all, these = thesePkgs, known = knownPackages)
+  oneSet <- function(mirror, allPackages){
+    thesePkgs <- allPackages[[mirror$name]][order(Package)] #data.table magic, knows Package is a column of...
+    setkey(thesePkgs, Package) #this makes no sense...?
+  }
+  
+  list(these = oneSet(mirror, allPackages), known = knownPackages)
 }
 
 #TODO return type is weird
 addHashes <- function(pkgs, mirror, mode="nix"){ #TODO should pkgs and mirror really be separate?
   write(paste("updating", mirror$name, "packages"), stderr())
 
-  cacheFetcher <- if (mode == "nix"){ nixprefetchcached } else { jsonprefetchcached }
+  cacheFetcher <- if (mode == "nix"){ nixfetchcached } else { jsonprefetchcached } #TODO i really dont understand what the cache fetcher is supposed to be for, its not like it updates an outdate entry or anything !?
   packagesFile <- sprintf("%s-packages.%s", mirror$name, mode)
   
   lambda <- function(p) {
@@ -108,17 +126,14 @@ addHashes <- function(pkgs, mirror, mode="nix"){ #TODO should pkgs and mirror re
   pkgs
 }
 
-#TODO error if missing hash
 genHash <- function(name, version, mirror) {
   write(sprintf("fetching %s : %s", name, version), stderr())
   
   # TODO "avoid nix-prefetch-url because it often fails to fetch/hash large files" is this still true, also jeez how big can R stuff be?
   url <- sprintf("%s%s_%s.tar.gz", mirror$url, name, version)
-
-  hash <- "nix-hash --type sha256 --base32 --flat <(wget -q -O - '%1$s')" # url
-  echo <- "&& echo >&2 ' added %2$s v%3$s'" # name, version
-  cmd <- sprintf(paste(hash, echo, collapse=" "), url, name, version)
-  system2("/usr/bin/env", c("bash","-c", shQuote(cmd)), stdout=TRUE)
+  cmd <- sprintf("set -o pipefail; wget -q -O - '%1$s' | nix-hash --type sha256 --base32 --flat /dev/stdin", url) #TODO meh
+  result <- try(system2("/usr/bin/env", c("bash","-c", shQuote(cmd)), stdout=TRUE))
+  ifelse(is.null(attr(result, "status")), result, stop(sprintf("'%s' failed.", cmd))) #TODO ugh this is fucked
 }
 
 #not sure which answer here we need https://stackoverflow.com/questions/21567057/programmatically-get-list-of-base-packages
@@ -129,6 +144,7 @@ getKnownBasePackages <- function() {
 
 #TODO todo consider figuring out how to call idesc_get_deps, it sets the first ("type") argument parse_deps properly
 #TODO consider handling version range assertions
+#TODO how can i use multiple orthogonal repositiories and have them depend on eachother?
 toDeps <- function(deps, knownPackages){
   fromNA <- function(s) ifelse(is.na(s), "",s)
   
