@@ -1,0 +1,10 @@
+# This file is generated from generate-r-packages.R. DO NOT EDIT.
+# Execute the following command to update the file.
+#
+# Rscript generate-r-packages.R %1$s >new && mv new %2$s
+
+{ self, derive }:
+  let derive2 = derive { %3$s };
+  in with self; {
+%4$s
+    }

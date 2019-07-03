@@ -1,3 +1,4 @@
+#TODO how the fuck do i get the things working that i had trouble with last time
 { stdenv, R, libcxx, xvfb_run, utillinux, Cocoa, Foundation, gettext, gfortran }:
 
 { name, buildInputs ? [], requireX ? false, ... } @ attrs:

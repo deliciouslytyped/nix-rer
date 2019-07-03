@@ -1,0 +1,27 @@
+{
+  "bioc":{
+    "homepage" : "https://bioconductor.org/packages/${biocVersion}/bioc/html/${name}.html",
+    "urls" : [
+      "mirror://bioc/${biocVersion}/bioc/src/contrib/${name}_${version}.tar.gz"
+      "mirror://bioc/${biocVersion}/bioc/src/contrib/Archive/${name}_${version}.tar.gz" #WTF
+      ]
+    },
+  "bioc-annotation" : {
+    "homepage" : "http://www.bioconductor.org/packages/${name}.html",
+    "urls" : [
+      "mirror://bioc/${biocVersion}/data/annotation/src/contrib/${name}_${version}.tar.gz"
+      ]
+    },
+  "bioc-experiment" : {
+    "homepage" : "http://www.bioconductor.org/packages/${name}.html",
+    "urls" : [
+      "mirror://bioc/${biocVersion}/data/experiment/src/contrib/${name}_${version}.tar.gz"
+      ]
+    },
+  "cran" : {
+    "homepage" : "http://mran.revolutionanalytics.com/snapshot/${snapshot}/web/packages/${name}/",
+    "urls" : [
+      "http://mran.revolutionanalytics.com/snapshot/${snapshot}/src/contrib/${name}_${version}.tar.gz"
+      ]
+    }
+}

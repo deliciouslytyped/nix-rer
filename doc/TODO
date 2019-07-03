@@ -1,0 +1,7 @@
+find and link r and rstudio documentation that explains the relevant points for this infrastructure
+how does nix-managed and rstudio managed temporary env stuff relate
+how can i a renvironment2nix
+scripts for generating package set description thingies that can be merged back upstream? / are compatible with the in tree stuff?
+
+
+how is the stuff in constants.nix generated ???

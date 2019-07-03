@@ -1,0 +1,9 @@
+{
+  "mirrors" : {
+  "bioc" : "http://bioconductor.statistik.tu-dortmund.de/packages/%1$s/bioc/src/contrib/",
+  "bioc-annotation" : "http://bioconductor.statistik.tu-dortmund.de/packages/%1$s/data/annotation/src/contrib",
+  "bioc-experiment" : "http://bioconductor.statistik.tu-dortmund.de/packages/%1$s/data/experiment/src/contrib/",
+  "cran" : "http://mran.revolutionanalytics.com/snapshot/%2$s/src/contrib/"
+  },
+  "biocVersion" : "3.8"
+}
