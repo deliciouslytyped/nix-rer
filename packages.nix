@@ -1,8 +1,8 @@
 {lib, callPackage}:
-let rooted = callPackage ./lib/extern/nix-rootedoverlay/rooted.nix {};
+let rooted = callPackage ./extern/nix-rootedoverlay/rooted.nix {};
     inherit (rooted.lib) interface overlays;
 in
   rooted.mkRoot {
-    interface = interface.default (self: self.ghidra);
+    interface = interface.default (self: self.tempWrapper); #TODO make tempwrapper autoevel to its default arguments by default in rootedoverlay
     layers = overlays.autoimport2 ./layers;
     }

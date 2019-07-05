@@ -12,7 +12,7 @@
 #    {mkHomepage, mkUrls}:
 #    args:
 mirror:
-  lib.makeOverridable #TODO i dont like how this pattern is used here
+  pkgs.lib.makeOverridable #TODO i dont like how this pattern is used here
   ({ name, version, sha256
   , depends ? []
   , doCheck ? true

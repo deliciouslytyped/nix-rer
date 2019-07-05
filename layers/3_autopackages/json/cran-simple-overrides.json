@@ -7,7 +7,7 @@
     "RMark" : [ "which" ],
     "RPushbullet" : [ "which" ],
     "qtpaint" : [ "cmake" ],
-    "qtbase" : [ "cmake" "perl" ],
+    "qtbase" : [ "cmake", "perl" ],
     "RcppEigen" : [ "libiconv" ],
     "R2SWF" : [ "pkgconfig" ],
     "rggobi" : [ "pkgconfig" ],
@@ -33,8 +33,8 @@
     "sysfonts" : [ "pkgconfig" ],
     "tesseract" : [ "pkgconfig" ],
     "Cairo" : [ "pkgconfig" ],
-    "Rsymphony" : [ "pkgconfig" "doxygen" "graphviz" "subversion" ],
-    "tcltk2" : [ "tcl" "tk" ],
+    "Rsymphony" : [ "pkgconfig", "doxygen", "graphviz", "subversion" ],
+    "tcltk2" : [ "tcl", "tk" ],
     "rPython" : [ "which" ],
     "gridGraphics" : [ "which" ],
     "mzR" : [ "netcdf" ],
@@ -50,12 +50,12 @@
     "phangorn" : [ "libiconv" ],
     "quadprog" : [ "libiconv" ],
 
-    "RCurl" : [ [ "curl" "dev" ] ],
-    "jqr" : [ ["jq" "lib"] ],
-    "tikzDevice" : [ "which" [ "texlive" "combined" "scheme-medium" ] ],
-    "adimpro" : [ "which" ["xorg" "xdpyinfo"] ],
-    "PET" : [ "which" ["xorg" "xdpyinfo"] "imagemagick" ],
-    "dti" : [ "which" ["xorg" "xdpyinfo"] "imagemagick" ]
+    "RCurl" : [ [ "curl", "dev" ] ],
+    "jqr" : [ ["jq", "lib"] ],
+    "tikzDevice" : [ "which", [ "texlive", "combined", "scheme-medium" ] ],
+    "adimpro" : [ "which", ["xorg", "xdpyinfo"] ],
+    "PET" : [ "which", ["xorg", "xdpyinfo"], "imagemagick" ],
+    "dti" : [ "which", ["xorg", "xdpyinfo"], "imagemagick" ]
     },
   "pkgsNativeBuildInputs": {
     "abn" : [ "gsl_1" ],
@@ -71,17 +71,17 @@
     "bnpmr" : [ "gsl_1" ],
     "Cardinal" : [ "which" ],
     "chebpol" : [ "fftw" ],
-    "ChemmineOB" : [ "openbabel" "pkgconfig" ],
+    "ChemmineOB" : [ "openbabel", "pkgconfig" ],
     "cit" : [ "gsl_1" ],
-    "diversitree" : [ "gsl_1" "fftw" ],
+    "diversitree" : [ "gsl_1", "fftw" ],
     "EMCluster" : [ "liblapack" ],
     "Formula" : [ "gmp" ],
     "geoCount" : [ "gsl_1" ],
     "GLAD" : [ "gsl_1" ],
-    "glpkAPI" : [ "gmp" "glpk" ],
+    "glpkAPI" : [ "gmp", "glpk" ],
     "graphscan" : [ "gsl_1" ],
     "gsl" : [ "gsl_1" ],
-    "h5" : [ "hdf5-cpp" "which" ],
+    "h5" : [ "hdf5-cpp", "which" ],
     "HiCseg" : [ "gsl_1" ],
     "imager" : [ "x11" ],
     "iBMQ" : [ "gsl_1" ],
@@ -90,10 +90,10 @@
     "libamtrack" : [ "gsl_1" ],
     "mvabund" : [ "gsl_1" ],
     "ncdf4" : [ "netcdf" ],
-    "nloptr" : [ "nlopt" "pkgconfig" ],
+    "nloptr" : [ "nlopt", "pkgconfig" ],
     "odbc" : [ "unixODBC" ],
     "outbreaker" : [ "gsl_1" ],
-    "pander" : [ "pandoc" "which" ],
+    "pander" : [ "pandoc", "which" ],
     "pbdMPI" : [ "openmpi" ],
     "pbdNCDF4" : [ "netcdf" ],
     "pbdPROF" : [ "openmpi" ],
@@ -109,342 +109,342 @@
     "RcppGSL" : [ "gsl_1" ],
     "RcppZiggurat" : [ "gsl_1" ],
     "reprex" : [ "which" ],
-    "rgdal" : [ "proj" "gdal" ],
+    "rgdal" : [ "proj", "gdal" ],
     "rgeos" : [ "geos" ],
-    "rgl" : [ "libGLU_combined" "xlibsWrapper" ],
+    "rgl" : [ "libGLU_combined", "xlibsWrapper" ],
     "Rglpk" : [ "glpk" ],
     "rhdf5" : [ "zlib" ],
     "Rhdf5lib" : [ "zlib" ],
     "rjags" : [ "jags" ],
     "Rlibeemd" : [ "gsl_1" ],
     "Rmpi" : [ "openmpi" ],
-    "RNetCDF" : [ "netcdf" "udunits" ],
+    "RNetCDF" : [ "netcdf", "udunits" ],
     "RODBCext" : [ "libiodbc" ],
     "RODBC" : [ "libiodbc" ],
     "rpanel" : [ "bwidget" ],
     "rpg" : [ "postgresql" ],
     "Rpoppler" : [ "poppler" ],
-    "RPostgreSQL" : [ "postgresql" "postgresql" ],
+    "RPostgreSQL" : [ "postgresql", "postgresql" ],
     "RProtoBuf" : [ "protobuf" ],
     "rPython" : [ "python" ],
     "Rserve" : [ "openssl" ],
     "runjags" : [ "jags" ],
     "rzmq" : [ "zeromq3" ],
-    "SAVE" : [ "zlib" "bzip2" "icu" "lzma" "pcre" ],
-    "sdcTable" : [ "gmp" "glpk" ],
-    "sf" : [ "gdal" "proj" "geos" ],
+    "SAVE" : [ "zlib", "bzip2", "icu", "lzma", "pcre" ],
+    "sdcTable" : [ "gmp", "glpk" ],
+    "sf" : [ "gdal", "proj", "geos" ],
     "simplexreg" : [ "gsl_1" ],
     "ssanv" : [ "proj" ],
     "stsm" : [ "gsl_1" ],
     "survSNP" : [ "gsl_1" ],
-    "tesseract" : [ "tesseract" "leptonica" ],
+    "tesseract" : [ "tesseract", "leptonica" ],
     "TKF" : [ "gsl_1" ],
     "topicmodels" : [ "gsl_1" ],
-    "udunits2" : [ "udunits" "expat" ],
+    "udunits2" : [ "udunits", "expat" ],
     "units" : [ "udunits" ],
     "V8" : [ "v8_3_14" ],
     "VBLPCM" : [ "gsl_1" ],
 
-    "BayesXsrc" : [ ["readline" "dev"] "ncurses" ],
-    "cairoDevice" : [ ["gtk2" "dev"] ],
-    "Cairo" : [ "libtiff" "libjpeg" ["cairo" "dev"] "x11" ["fontconfig" "lib"] ],
-    "curl" : [ ["curl" "dev"] ],
-    "devEMF" : [ "xorg.libXft.dev" "x11" ],
-    "fftw" : [ ["fftw" "dev"] ],
-    "fftwtools" : [ ["fftw" "dev"] ],
-    "gdtools" : [ ["cairo" "dev"] ["fontconfig" "lib"] ["freetype" "dev"] ],
-    "git2r" : [ ["zlib" "dev"] ["openssl" "dev"] ["libssh2" "dev"] "libgit2" "pkgconfig" ],
-    "gmp" : [ ["gmp" "dev"] ],
-    "haven" : [ "libiconv" ["zlib" "dev"] ],
-    "h5vc" : [ ["zlib" "dev"] ],
-    "igraph" : [ "gmp" ["libxml2" "dev"] ],
-    "jpeg" : [ ["libjpeg" "dev"] ],
-    "jqr" : [ ["jq" "dev"] ],
-    "kza" : [ ["fftw" "dev"] ],
-    "magick" : [ ["imagemagick" "dev"] ],
-    "mwaved" : [ ["fftw" "dev"] ],
-    "pdftools" : [ ["poppler" "dev"] ],
-    "PKI" : [ ["openssl" "dev"] ],
-    "png" : [ ["libpng" "dev"] ],
-    "PopGenome" : [ ["zlib" "dev"] ],
-    "R2SWF" : [ "zlib" "libpng" ["freetype" "dev"] ],
-    "rcdd" : [ ["gmp" "dev"] ],
-    "RcppCNPy" : [ ["zlib" "dev"] ],
-    "rggobi" : [ "ggobi" ["gtk2" "dev"] ["libxml2" "dev"] ],
-    "RGtk2" : [ ["gtk2" "dev"] ],
-    "Rhpc" : [ "zlib" ["bzip2" "dev"] "icu" ["lzma" "dev"] "openmpi" ["pcre" "dev"] ],
-    "Rhtslib" : [ ["zlib" "dev"] "automake" "autoconf" ],
-    "RJaCGH" : [ ["zlib" "dev"] ],
-    "rJava" : [ "zlib" ["bzip2" "dev"] "icu" ["lzma" "dev"] ["pcre" "dev"] "jdk" "libzip" ],
-    "Rmpfr" : [ "gmp" ["mpfr" "dev"] ],
-    "rmatio" : [ ["zlib" "dev"] ],
-    "RMySQL" : [ "zlib" "mysql.connector-c" ["openssl" "dev"] ],
-    "rphast" : [ ["pcre" "dev"] "zlib" "bzip2" "gzip" "readline" ],
-    "RSclient" : [ ["openssl" "dev"] ],
-    "Rssa" : [ ["fftw" "dev"] ],
-    "rtfbs" : [ "zlib" ["pcre" "dev"] "bzip2" "gzip" "readline" ],
-    "rtiff" : [ ["libtiff" "dev"] ],
-    "RVowpalWabbit" : [ ["zlib" "dev"] "boost" ],
-    "seewave" : [ ["fftw" "dev"] ["libsndfile" "dev"] ],
-    "seqinr" : [ ["zlib" "dev"] ],
-    "seqminer" : [ ["zlib" "dev"] "bzip2" ],
-    "showtext" : [ "zlib" "libpng" "icu" ["freetype" "dev"] ],
-    "spate" : [ ["fftw" "dev"] ],
-    "stringi" : [ ["icu" "dev"] ],
-    "TAQMNGR" : [ ["zlib" "dev"] ],
-    "tiff" : [ ["libtiff" "dev"] ],
-    "tkrplot" : [ ["xorg" "libX11"] ["tk" "dev"] ],
-    "WhopGenome" : [ ["zlib" "dev"] ],
-    "XBRL" : [ "zlib" ["libxml2" "dev"] ],
-    "XML" : [ "libtool" ["libxml2" "dev"] "xmlsec" "libxslt" ],
-    "affyPLM" : [ ["zlib" "dev"] ],
-    "bamsignals" : [ ["zlib" "dev"] ],
-    "BitSeq" : [ ["zlib" "dev"] ],
+    "BayesXsrc" : [ ["readline", "dev"], "ncurses" ],
+    "cairoDevice" : [ ["gtk2", "dev"] ],
+    "Cairo" : [ "libtiff", "libjpeg", ["cairo", "dev"], "x11", ["fontconfig", "lib"] ],
+    "curl" : [ ["curl", "dev"] ],
+    "devEMF" : [ "xorg.libXft.dev", "x11" ],
+    "fftw" : [ ["fftw", "dev"] ],
+    "fftwtools" : [ ["fftw", "dev"] ],
+    "gdtools" : [ ["cairo", "dev"], ["fontconfig", "lib"], ["freetype", "dev"] ],
+    "git2r" : [ ["zlib", "dev"], ["openssl", "dev"], ["libssh2", "dev"], "libgit2", "pkgconfig" ],
+    "gmp" : [ ["gmp", "dev"] ],
+    "haven" : [ "libiconv", ["zlib", "dev"] ],
+    "h5vc" : [ ["zlib", "dev"] ],
+    "igraph" : [ "gmp", ["libxml2", "dev"] ],
+    "jpeg" : [ ["libjpeg", "dev"] ],
+    "jqr" : [ ["jq", "dev"] ],
+    "kza" : [ ["fftw", "dev"] ],
+    "magick" : [ ["imagemagick", "dev"] ],
+    "mwaved" : [ ["fftw", "dev"] ],
+    "pdftools" : [ ["poppler", "dev"] ],
+    "PKI" : [ ["openssl", "dev"] ],
+    "png" : [ ["libpng", "dev"] ],
+    "PopGenome" : [ ["zlib", "dev"] ],
+    "R2SWF" : [ "zlib", "libpng", ["freetype", "dev"] ],
+    "rcdd" : [ ["gmp", "dev"] ],
+    "RcppCNPy" : [ ["zlib", "dev"] ],
+    "rggobi" : [ "ggobi", ["gtk2", "dev"], ["libxml2", "dev"] ],
+    "RGtk2" : [ ["gtk2", "dev"] ],
+    "Rhpc" : [ "zlib", ["bzip2", "dev"], "icu", ["lzma", "dev"], "openmpi", ["pcre", "dev"] ],
+    "Rhtslib" : [ ["zlib", "dev"], "automake", "autoconf" ],
+    "RJaCGH" : [ ["zlib", "dev"] ],
+    "rJava" : [ "zlib", ["bzip2", "dev"], "icu", ["lzma", "dev"], ["pcre", "dev"], "jdk", "libzip" ],
+    "Rmpfr" : [ "gmp", ["mpfr", "dev"] ],
+    "rmatio" : [ ["zlib", "dev"] ],
+    "RMySQL" : [ "zlib", "mysql.connector-c", ["openssl", "dev"] ],
+    "rphast" : [ ["pcre", "dev"], "zlib", "bzip2", "gzip", "readline" ],
+    "RSclient" : [ ["openssl", "dev"] ],
+    "Rssa" : [ ["fftw", "dev"] ],
+    "rtfbs" : [ "zlib", ["pcre", "dev"], "bzip2", "gzip", "readline" ],
+    "rtiff" : [ ["libtiff", "dev"] ],
+    "RVowpalWabbit" : [ ["zlib", "dev"], "boost" ],
+    "seewave" : [ ["fftw", "dev"], ["libsndfile", "dev"] ],
+    "seqinr" : [ ["zlib", "dev"] ],
+    "seqminer" : [ ["zlib", "dev"], "bzip2" ],
+    "showtext" : [ "zlib", "libpng", "icu", ["freetype", "dev"] ],
+    "spate" : [ ["fftw", "dev"] ],
+    "stringi" : [ ["icu", "dev"] ],
+    "TAQMNGR" : [ ["zlib", "dev"] ],
+    "tiff" : [ ["libtiff", "dev"] ],
+    "tkrplot" : [ ["xorg", "libX11"], ["tk", "dev"] ],
+    "WhopGenome" : [ ["zlib", "dev"] ],
+    "XBRL" : [ "zlib", ["libxml2", "dev"] ],
+    "XML" : [ "libtool", ["libxml2", "dev"], "xmlsec", "libxslt" ],
+    "affyPLM" : [ ["zlib", "dev"] ],
+    "bamsignals" : [ ["zlib", "dev"] ],
+    "BitSeq" : [ ["zlib", "dev"] ],
     "DiffBind" : [ "zlib" ],
-    "ShortRead" : [ ["zlib" "dev"] ],
-    "oligo" : [ ["zlib" "dev"] ],
-    "gmapR" : [ ["zlib" "dev"] ],
-    "Rsubread" : [ ["zlib" "dev"] ],
-    "XVector" : [ ["zlib" "dev"] ],
-    "Rsamtools" : [ ["zlib" "dev"] ],
-    "sysfonts" : [ "zlib" "libpng" ["freetype" "dev"] ],
-    "rtracklayer" : [ ["zlib" "dev"] ],
-    "affyio" : [ ["zlib" "dev"] ],
-    "VariantAnnotation" : [ ["zlib" "dev"] ],
-    "snpStats" : [ ["zlib" "dev"] ]
+    "ShortRead" : [ ["zlib", "dev"] ],
+    "oligo" : [ ["zlib", "dev"] ],
+    "gmapR" : [ ["zlib", "dev"] ],
+    "Rsubread" : [ ["zlib", "dev"] ],
+    "XVector" : [ ["zlib", "dev"] ],
+    "Rsamtools" : [ ["zlib", "dev"] ],
+    "sysfonts" : [ "zlib", "libpng", ["freetype", "dev"] ],
+    "rtracklayer" : [ ["zlib", "dev"] ],
+    "affyio" : [ ["zlib", "dev"] ],
+    "VariantAnnotation" : [ ["zlib", "dev"] ],
+    "snpStats" : [ ["zlib", "dev"] ]
     },
   "requireX" : [
-    "accrual"
-    "ade4TkGUI"
-    "analogue"
-    "analogueExtra"
-    "AnalyzeFMRI"
-    "AnnotLists"
-    "AnthropMMD"
-    "aplpack"
-    "aqfig"
-    "arf3DS4"
-    "asbio"
-    "AtelieR"
-    "BAT"
-    "bayesDem"
-    "BCA"
-    "BEQI2"
-    "betapart"
-    "BiodiversityR"
-    "bio_infer"
-    "bipartite"
-    "biplotbootGUI"
-    "blender"
-    "cairoDevice"
-    "CCTpack"
-    "cncaGUI"
-    "cocorresp"
-    "CommunityCorrelogram"
-    "confidence"
-    "constrainedKriging"
-    "ConvergenceConcepts"
-    "cpa"
-    "DALY"
-    "dave"
-    "Deducer"
-    "DeducerPlugInExample"
-    "DeducerPlugInScaling"
-    "DeducerSpatial"
-    "DeducerSurvival"
-    "DeducerText"
-    "Demerelate"
-    "detrendeR"
-    "dgmb"
-    "DivMelt"
-    "dpa"
-    "DSpat"
-    "dynamicGraph"
-    "dynBiplotGUI"
-    "EasyqpcR"
-    "EcoVirtual"
-    "ENiRG"
-    "exactLoglinTest"
-    "fat2Lpoly"
-    "fbati"
-    "FD"
-    "feature"
-    "FeedbackTS"
-    "FFD"
-    "fgui"
-    "fisheyeR"
-    "fit4NM"
-    "forams"
-    "forensim"
-    "FreeSortR"
-    "fscaret"
-    "fSRM"
-    "gcmr"
-    "GeoGenetix"
-    "geomorph"
-    "geoR"
-    "geoRglm"
-    "georob"
-    "GGEBiplotGUI"
-    "gnm"
-    "GPCSIV"
-    "GrammR"
-    "GrapheR"
-    "GroupSeq"
-    "gsubfn"
-    "GUniFrac"
-    "gWidgets2RGtk2"
-    "gWidgets2tcltk"
-    "gWidgetsRGtk2"
-    "gWidgetstcltk"
-    "HH"
-    "HiveR"
-    "HomoPolymer"
-    "ic50"
-    "iDynoR"
-    "in2extRemes"
-    "iplots"
-    "isopam"
-    "IsotopeR"
-    "JGR"
-    "KappaGUI"
-    "likeLTD"
-    "logmult"
-    "LS2Wstat"
-    "MareyMap"
-    "memgene"
-    "MergeGUI"
-    "metacom"
-    "Meth27QC"
-    "MetSizeR"
-    "MicroStrategyR"
-    "migui"
-    "miniGUI"
-    "MissingDataGUI"
-    "mixsep"
-    "mlDNA"
-    "MplusAutomation"
-    "mpmcorrelogram"
-    "mritc"
-    "MTurkR"
-    "multgee"
-    "multibiplotGUI"
-    "nodiv"
-    "OligoSpecificitySystem"
-    "onemap"
-    "OpenRepGrid"
-    "paleoMAS"
-    "pbatR"
-    "PBSadmb"
-    "PBSmodelling"
-    "PCPS"
-    "pez"
-    "phylotools"
-    "picante"
-    "PKgraph"
-    "plotSEMM"
-    "plsRbeta"
-    "plsRglm"
-    "PopGenReport"
-    "poppr"
-    "powerpkg"
-    "PredictABEL"
-    "prefmod"
-    "PrevMap"
-    "ProbForecastGOP"
-    "qtbase"
-    "qtpaint"
-    "r4ss"
-    "RandomFields"
-    "rareNMtests"
-    "rAverage"
-    "Rcmdr"
-    "RcmdrPlugin_coin"
-    "RcmdrPlugin_depthTools"
-    "RcmdrPlugin_DoE"
-    "RcmdrPlugin_EACSPIR"
-    "RcmdrPlugin_EBM"
-    "RcmdrPlugin_EcoVirtual"
-    "RcmdrPlugin_EZR"
-    "RcmdrPlugin_FactoMineR"
-    "RcmdrPlugin_HH"
-    "RcmdrPlugin_IPSUR"
-    "RcmdrPlugin_KMggplot2"
-    "RcmdrPlugin_lfstat"
-    "RcmdrPlugin_MA"
-    "RcmdrPlugin_mosaic"
-    "RcmdrPlugin_MPAStats"
-    "RcmdrPlugin_orloca"
-    "RcmdrPlugin_plotByGroup"
-    "RcmdrPlugin_pointG"
-    "RcmdrPlugin_qual"
-    "RcmdrPlugin_ROC"
-    "RcmdrPlugin_sampling"
-    "RcmdrPlugin_SCDA"
-    "RcmdrPlugin_SLC"
-    "RcmdrPlugin_sos"
-    "RcmdrPlugin_steepness"
-    "RcmdrPlugin_survival"
-    "RcmdrPlugin_TeachingDemos"
-    "RcmdrPlugin_temis"
-    "RcmdrPlugin_UCA"
-    "recluster"
-    "relimp"
-    "RenextGUI"
-    "reportRx"
-    "reshapeGUI"
-    "rgl"
-    "RHRV"
-    "rich"
-    "RNCEP"
-    "RQDA"
-    "RSDA"
-    "rsgcc"
-    "RSurvey"
-    "RunuranGUI"
-    "sharpshootR"
-    "simba"
-    "Simile"
-    "SimpleTable"
-    "SOLOMON"
-    "soundecology"
-    "SPACECAP"
-    "spacodiR"
-    "spatsurv"
-    "sqldf"
-    "SRRS"
-    "SSDforR"
-    "statcheck"
-    "StatDA"
-    "STEPCAM"
-    "stosim"
-    "strvalidator"
-    "stylo"
-    "svDialogstcltk"
-    "svIDE"
-    "svSocket"
-    "svWidgets"
-    "SYNCSA"
-    "SyNet"
-    "tcltk2"
-    "TED"
-    "TestScorer"
-    "TIMP"
-    "titan"
-    "tkrgl"
-    "tkrplot"
-    "tmap"
-    "tspmeta"
-    "TTAinterfaceTrendAnalysis"
-    "twiddler"
-    "vcdExtra"
-    "VecStatGraphs3D"
-    "vegan"
-    "vegan3d"
-    "vegclust"
-    "VIMGUI"
-    "WMCapacity"
-    "x12GUI"
+    "accrual",
+    "ade4TkGUI",
+    "analogue",
+    "analogueExtra",
+    "AnalyzeFMRI",
+    "AnnotLists",
+    "AnthropMMD",
+    "aplpack",
+    "aqfig",
+    "arf3DS4",
+    "asbio",
+    "AtelieR",
+    "BAT",
+    "bayesDem",
+    "BCA",
+    "BEQI2",
+    "betapart",
+    "BiodiversityR",
+    "bio_infer",
+    "bipartite",
+    "biplotbootGUI",
+    "blender",
+    "cairoDevice",
+    "CCTpack",
+    "cncaGUI",
+    "cocorresp",
+    "CommunityCorrelogram",
+    "confidence",
+    "constrainedKriging",
+    "ConvergenceConcepts",
+    "cpa",
+    "DALY",
+    "dave",
+    "Deducer",
+    "DeducerPlugInExample",
+    "DeducerPlugInScaling",
+    "DeducerSpatial",
+    "DeducerSurvival",
+    "DeducerText",
+    "Demerelate",
+    "detrendeR",
+    "dgmb",
+    "DivMelt",
+    "dpa",
+    "DSpat",
+    "dynamicGraph",
+    "dynBiplotGUI",
+    "EasyqpcR",
+    "EcoVirtual",
+    "ENiRG",
+    "exactLoglinTest",
+    "fat2Lpoly",
+    "fbati",
+    "FD",
+    "feature",
+    "FeedbackTS",
+    "FFD",
+    "fgui",
+    "fisheyeR",
+    "fit4NM",
+    "forams",
+    "forensim",
+    "FreeSortR",
+    "fscaret",
+    "fSRM",
+    "gcmr",
+    "GeoGenetix",
+    "geomorph",
+    "geoR",
+    "geoRglm",
+    "georob",
+    "GGEBiplotGUI",
+    "gnm",
+    "GPCSIV",
+    "GrammR",
+    "GrapheR",
+    "GroupSeq",
+    "gsubfn",
+    "GUniFrac",
+    "gWidgets2RGtk2",
+    "gWidgets2tcltk",
+    "gWidgetsRGtk2",
+    "gWidgetstcltk",
+    "HH",
+    "HiveR",
+    "HomoPolymer",
+    "ic50",
+    "iDynoR",
+    "in2extRemes",
+    "iplots",
+    "isopam",
+    "IsotopeR",
+    "JGR",
+    "KappaGUI",
+    "likeLTD",
+    "logmult",
+    "LS2Wstat",
+    "MareyMap",
+    "memgene",
+    "MergeGUI",
+    "metacom",
+    "Meth27QC",
+    "MetSizeR",
+    "MicroStrategyR",
+    "migui",
+    "miniGUI",
+    "MissingDataGUI",
+    "mixsep",
+    "mlDNA",
+    "MplusAutomation",
+    "mpmcorrelogram",
+    "mritc",
+    "MTurkR",
+    "multgee",
+    "multibiplotGUI",
+    "nodiv",
+    "OligoSpecificitySystem",
+    "onemap",
+    "OpenRepGrid",
+    "paleoMAS",
+    "pbatR",
+    "PBSadmb",
+    "PBSmodelling",
+    "PCPS",
+    "pez",
+    "phylotools",
+    "picante",
+    "PKgraph",
+    "plotSEMM",
+    "plsRbeta",
+    "plsRglm",
+    "PopGenReport",
+    "poppr",
+    "powerpkg",
+    "PredictABEL",
+    "prefmod",
+    "PrevMap",
+    "ProbForecastGOP",
+    "qtbase",
+    "qtpaint",
+    "r4ss",
+    "RandomFields",
+    "rareNMtests",
+    "rAverage",
+    "Rcmdr",
+    "RcmdrPlugin_coin",
+    "RcmdrPlugin_depthTools",
+    "RcmdrPlugin_DoE",
+    "RcmdrPlugin_EACSPIR",
+    "RcmdrPlugin_EBM",
+    "RcmdrPlugin_EcoVirtual",
+    "RcmdrPlugin_EZR",
+    "RcmdrPlugin_FactoMineR",
+    "RcmdrPlugin_HH",
+    "RcmdrPlugin_IPSUR",
+    "RcmdrPlugin_KMggplot2",
+    "RcmdrPlugin_lfstat",
+    "RcmdrPlugin_MA",
+    "RcmdrPlugin_mosaic",
+    "RcmdrPlugin_MPAStats",
+    "RcmdrPlugin_orloca",
+    "RcmdrPlugin_plotByGroup",
+    "RcmdrPlugin_pointG",
+    "RcmdrPlugin_qual",
+    "RcmdrPlugin_ROC",
+    "RcmdrPlugin_sampling",
+    "RcmdrPlugin_SCDA",
+    "RcmdrPlugin_SLC",
+    "RcmdrPlugin_sos",
+    "RcmdrPlugin_steepness",
+    "RcmdrPlugin_survival",
+    "RcmdrPlugin_TeachingDemos",
+    "RcmdrPlugin_temis",
+    "RcmdrPlugin_UCA",
+    "recluster",
+    "relimp",
+    "RenextGUI",
+    "reportRx",
+    "reshapeGUI",
+    "rgl",
+    "RHRV",
+    "rich",
+    "RNCEP",
+    "RQDA",
+    "RSDA",
+    "rsgcc",
+    "RSurvey",
+    "RunuranGUI",
+    "sharpshootR",
+    "simba",
+    "Simile",
+    "SimpleTable",
+    "SOLOMON",
+    "soundecology",
+    "SPACECAP",
+    "spacodiR",
+    "spatsurv",
+    "sqldf",
+    "SRRS",
+    "SSDforR",
+    "statcheck",
+    "StatDA",
+    "STEPCAM",
+    "stosim",
+    "strvalidator",
+    "stylo",
+    "svDialogstcltk",
+    "svIDE",
+    "svSocket",
+    "svWidgets",
+    "SYNCSA",
+    "SyNet",
+    "tcltk2",
+    "TED",
+    "TestScorer",
+    "TIMP",
+    "titan",
+    "tkrgl",
+    "tkrplot",
+    "tmap",
+    "tspmeta",
+    "TTAinterfaceTrendAnalysis",
+    "twiddler",
+    "vcdExtra",
+    "VecStatGraphs3D",
+    "vegan",
+    "vegan3d",
+    "vegclust",
+    "VIMGUI",
+    "WMCapacity",
+    "x12GUI",
     "xergm"
     ],
   "skipCheck" : [

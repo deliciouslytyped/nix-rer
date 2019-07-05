@@ -1,12 +1,6 @@
 #TODO regenerate with knownPakcages only being the local package set, probably import from self? how does R resolve this stuff?
-{lib, callPackage, pkgs}:
+{lib, callPackage, pkgs, buildRPackage}:
 let
-  buildRPackage = pkgs.callPackage ../../lib/generic-builder.nix {
-    R = pkgs.R;
-    inherit (pkgs.darwin.apple_sdk.frameworks) Cocoa Foundation;
-    inherit (pkgs) gettext gfortran;
-  };
-
   jsonPackages = (lib.importJSON ./json/cran-packages.json).packages; #TODO get mirror or something
   getMirror = name: #TODO meh
     let

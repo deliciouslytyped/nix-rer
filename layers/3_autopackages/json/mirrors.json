@@ -2,26 +2,30 @@
   "bioc":{
     "homepage" : "https://bioconductor.org/packages/${biocVersion}/bioc/html/${name}.html",
     "urls" : [
-      "mirror://bioc/${biocVersion}/bioc/src/contrib/${name}_${version}.tar.gz"
-      "mirror://bioc/${biocVersion}/bioc/src/contrib/Archive/${name}_${version}.tar.gz"
-      ]
+      "mirror://bioc/${pversion}/bioc/src/contrib/${name}_${version}.tar.gz",
+      "mirror://bioc/${pversion}/bioc/src/contrib/Archive/${name}_${version}.tar.gz"
+      ],
+      "version" : "3.8"
     },
   "bioc-annotation" : {
     "homepage" : "http://www.bioconductor.org/packages/${name}.html",
     "urls" : [
-      "mirror://bioc/${biocVersion}/data/annotation/src/contrib/${name}_${version}.tar.gz"
-      ]
+      "mirror://bioc/${pversion}/data/annotation/src/contrib/${name}_${version}.tar.gz"
+      ],
+      "version" : "3.8"
     },
   "bioc-experiment" : {
     "homepage" : "http://www.bioconductor.org/packages/${name}.html",
     "urls" : [
-      "mirror://bioc/${biocVersion}/data/experiment/src/contrib/${name}_${version}.tar.gz"
-      ]
+      "mirror://bioc/${pversion}/data/experiment/src/contrib/${name}_${version}.tar.gz"
+      ],
+      "version" : "3.8"
     },
   "cran" : {
-    "homepage" : "http://mran.revolutionanalytics.com/snapshot/${snapshot}/web/packages/${name}/",
+    "homepage" : "http://mran.revolutionanalytics.com/snapshot/${pversion}/web/packages/${name}/",
     "urls" : [
-      "http://mran.revolutionanalytics.com/snapshot/${snapshot}/src/contrib/${name}_${version}.tar.gz"
-      ]
+      "http://mran.revolutionanalytics.com/snapshot/${pversion}/src/contrib/${name}_${version}.tar.gz"
+      ],
+      "version" : "2019-07-02"
     }
 }

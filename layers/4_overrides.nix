@@ -3,18 +3,18 @@
 #TODO Alphabetical sort script
 /*
 #TODO i dont get what this is for
-{pkgs, self, lib, stdenv}: {
+{pkgs, self, lib, super.nixpkgs.stdenv}: {
 packagesWithRDepends = {
   FactoMineR = [ self.car ];
   pander = [ self.codetools ];
 };
 */
 self: super: {
-  cran-packages = super.cran // {
+  cran = super.cran // {
     stringi = super.cran.stringi.overrideDerivation (attrs: {
       postInstall = let
         icuName = "icudt52l";
-        icuSrc = pkgs.fetchzip {
+        icuSrc = super.nixpkgs.fetchzip {
           url = "http://static.rexamine.com/packages/${icuName}.zip";
           sha256 = "0hvazpizziq5ibc9017i1bb45yryfl26wzfsv05vk9mc1575r6xj";
           stripRoot = false;
@@ -26,9 +26,9 @@ self: super: {
     });
 
     xml2 = super.cran.xml2.overrideDerivation (attrs: {
-      nativeBuildInputs = attrs.nativeBuildInputs ++ (lib.optionals stdenv.isDarwin [ pkgs.perl ]); #TODO test
+      nativeBuildInputs = attrs.nativeBuildInputs ++ (super.nixpkgs.lib.optionals super.nixpkgs.stdenv.isDarwin [ super.nixpkgs.perl ]); #TODO test
       preConfigure = ''
-        export LIBXML_INCDIR=${pkgs.libxml2.dev}/include/libxml2
+        export LIBXML_INCDIR=${super.nixpkgs.libxml2.dev}/include/libxml2
         patchShebangs configure
         '';
     });
@@ -46,9 +46,9 @@ self: super: {
     });
 
     data_table = super.cran.data_table.overrideDerivation (attrs: {
-      nativeBuildInputs = attrs.nativeBuildInputs ++ (lib.optional stdenv.isDarwin [ pkgs.which ]); #TODO test
+      nativeBuildInputs = attrs.nativeBuildInputs ++ (super.nixpkgs.lib.optional super.nixpkgs.stdenv.isDarwin [ super.nixpkgs.which ]); #TODO test
       NIX_CFLAGS_COMPILE = attrs.NIX_CFLAGS_COMPILE
-        + lib.optionalString stdenv.isDarwin " -fopenmp";
+        + super.nixpkgs.lib.optionalString super.nixpkgs.stdenv.isDarwin " -fopenmp";
     });
 
     rpf = super.cran.rpf.overrideDerivation (attrs: {
@@ -57,23 +57,23 @@ self: super: {
 
     rJava = super.cran.rJava.overrideDerivation (attrs: {
       preConfigure = ''
-        export JAVA_CPPFLAGS=-I${pkgs.jdk}/include/
-        export JAVA_HOME=${pkgs.jdk}
+        export JAVA_CPPFLAGS=-I${super.nixpkgs.jdk}/include/
+        export JAVA_HOME=${super.nixpkgs.jdk}
       '';
     });
 
     JavaGD = super.cran.JavaGD.overrideDerivation (attrs: {
       preConfigure = ''
-        export JAVA_CPPFLAGS=-I${pkgs.jdk}/include/
-        export JAVA_HOME=${pkgs.jdk}
+        export JAVA_CPPFLAGS=-I${super.nixpkgs.jdk}/include/
+        export JAVA_HOME=${super.nixpkgs.jdk}
       '';
     });
 
     JuniperKernel = super.cran.JuniperKernel.overrideDerivation (attrs: {
-      buildInputs = attrs.buildInputs ++ (lib.optionals stdenv.isDarwin [ pkgs.darwin.binutils ]); #TODO test this
-      postPatch = lib.optionalString stdenv.isDarwin ''
+      buildInputs = attrs.buildInputs ++ (super.nixpkgs.lib.optionals super.nixpkgs.stdenv.isDarwin [ super.nixpkgs.darwin.binutils ]); #TODO test this
+      postPatch = super.nixpkgs.lib.optionalString super.nixpkgs.stdenv.isDarwin ''
         for file in {R,src}/*.R; do
-            sed -i 's#system("which \(otool\|install_name_tool\)"[^)]*)#"${pkgs.darwin.cctools}/bin/\1"#g' $file
+            sed -i 's#system("which \(otool\|install_name_tool\)"[^)]*)#"${super.nixpkgs.darwin.cctools}/bin/\1"#g' $file
         done
       '';
       preConfigure = ''
@@ -88,12 +88,12 @@ self: super: {
     });
 
     pbdZMQ = super.cran.pbdZMQ.overrideDerivation (attrs: {
-      buildInputs = attrs.buildInputs ++ (lib.optionals stdenv.isDarwin [ pkgs.darwin.binutils ]); #TODO test this
-      nativeBuildInputs = attrs.nativeBuildInputs ++ (lib.optionals stdenv.isDarwin [ pkgs.which ]);
+      buildInputs = attrs.buildInputs ++ (super.nixpkgs.lib.optionals super.nixpkgs.stdenv.isDarwin [ super.nixpkgs.darwin.binutils ]); #TODO test this
+      nativeBuildInputs = attrs.nativeBuildInputs ++ (super.nixpkgs.super.nixpkgs.lib.optionals super.nixpkgs.stdenv.isDarwin [ super.nixpkgs.which ]);
 
-      postPatch = lib.optionalString stdenv.isDarwin ''
+      postPatch = super.nixpkgs.lib.optionalString super.nixpkgs.stdenv.isDarwin ''
         for file in R/*.{r,r.in}; do
-            sed -i 's#system("which \(\w\+\)"[^)]*)#"${pkgs.darwin.cctools}/bin/\1"#g' $file
+            sed -i 's#system("which \(\w\+\)"[^)]*)#"${super.nixpkgs.darwin.cctools}/bin/\1"#g' $file
         done
       '';
     });
@@ -106,43 +106,43 @@ self: super: {
 
     Rmpfr = super.cran.Rmpfr.overrideDerivation (attrs: {
       configureFlags = [
-        "--with-mpfr-include=${pkgs.mpfr.dev}/include"
+        "--with-mpfr-include=${super.nixpkgs.mpfr.dev}/include"
       ];
     });
 
     RVowpalWabbit = super.cran.RVowpalWabbit.overrideDerivation (attrs: {
       configureFlags = [
-        "--with-boost=${pkgs.boost.dev}" "--with-boost-libdir=${pkgs.boost.out}/lib"
+        "--with-boost=${super.nixpkgs.boost.dev}" "--with-boost-libdir=${super.nixpkgs.boost.out}/lib"
       ];
     });
 
     RAppArmor = super.cran.RAppArmor.overrideDerivation (attrs: {
-      LIBAPPARMOR_HOME = "${pkgs.libapparmor}";
+      LIBAPPARMOR_HOME = "${super.nixpkgs.libapparmor}";
     });
 
     RMySQL = super.cran.RMySQL.overrideDerivation (attrs: {
-      MYSQL_DIR="${pkgs.mysql.connector-c}";
+      MYSQL_DIR="${super.nixpkgs.mysql.connector-c}";
       preConfigure = ''
         patchShebangs configure
       '';
     });
 
     devEMF = super.cran.devEMF.overrideDerivation (attrs: {
-      NIX_CFLAGS_LINK = "-L${pkgs.xorg.libXft.out}/lib -lXft";
+      NIX_CFLAGS_LINK = "-L${super.nixpkgs.xorg.libXft.out}/lib -lXft";
       NIX_LDFLAGS = "-lX11";
     });
 
     slfm = super.cran.slfm.overrideDerivation (attrs: {
-      PKG_LIBS = "-L${pkgs.openblasCompat}/lib -lopenblas";
+      PKG_LIBS = "-L${super.nixpkgs.openblasCompat}/lib -lopenblas";
     });
 
     SamplerCompare = super.cran.SamplerCompare.overrideDerivation (attrs: {
-      PKG_LIBS = "-L${pkgs.openblasCompat}/lib -lopenblas";
+      PKG_LIBS = "-L${super.nixpkgs.openblasCompat}/lib -lopenblas";
     });
 
     openssl = super.cran.openssl.overrideDerivation (attrs: {
-      PKGCONFIG_CFLAGS = "-I${pkgs.openssl.dev}/include";
-      PKGCONFIG_LIBS = "-Wl,-rpath,${pkgs.openssl.out}/lib -L${pkgs.openssl.out}/lib -lssl -lcrypto";
+      PKGCONFIG_CFLAGS = "-I${super.nixpkgs.openssl.dev}/include";
+      PKGCONFIG_LIBS = "-Wl,-rpath,${super.nixpkgs.openssl.out}/lib -L${super.nixpkgs.openssl.out}/lib -lssl -lcrypto";
     });
 
     Rserve = super.cran.Rserve.overrideDerivation (attrs: {
@@ -159,8 +159,8 @@ self: super: {
 
     V8 = super.cran.V8.overrideDerivation (attrs: {
       preConfigure = ''
-        export INCLUDE_DIR=${pkgs.v8_3_14}/include
-        export LIB_DIR=${pkgs.v8_3_14}/lib
+        export INCLUDE_DIR=${super.nixpkgs.v8_3_14}/include
+        export LIB_DIR=${super.nixpkgs.v8_3_14}/lib
         patchShebangs configure
         '';
     });
@@ -192,15 +192,15 @@ self: super: {
 
     rpanel = super.cran.rpanel.overrideDerivation (attrs: {
       preConfigure = ''
-        export TCLLIBPATH="${pkgs.bwidget}/lib/bwidget${pkgs.bwidget.version}"
+        export TCLLIBPATH="${super.nixpkgs.bwidget}/lib/bwidget${super.nixpkgs.bwidget.version}"
       '';
-      TCLLIBPATH = "${pkgs.bwidget}/lib/bwidget${pkgs.bwidget.version}";
+      TCLLIBPATH = "${super.nixpkgs.bwidget}/lib/bwidget${super.nixpkgs.bwidget.version}";
     });
 
     RPostgres = super.cran.RPostgres.overrideDerivation (attrs: {
       preConfigure = ''
-        export INCLUDE_DIR=${pkgs.postgresql}/include
-        export LIB_DIR=${pkgs.postgresql.lib}/lib
+        export INCLUDE_DIR=${super.nixpkgs.postgresql}/include
+        export LIB_DIR=${super.nixpkgs.postgresql.lib}/lib
         patchShebangs configure
         '';
     });
@@ -224,7 +224,7 @@ self: super: {
     });
 
     geojsonio = super.cran.geojsonio.overrideDerivation (attrs: {
-      buildInputs = [ cacert ] ++ attrs.buildInputs;
+      buildInputs = [ super.nixpkgs.cacert ] ++ attrs.buildInputs;
     });
 
     rstan = super.cran.rstan.overrideDerivation (attrs: {
@@ -235,8 +235,8 @@ self: super: {
       preConfigure = ''
         patchShebangs configure
         '';
-      PKGCONFIG_CFLAGS = "-I${pkgs.openssl.dev}/include -I${pkgs.cyrus_sasl.dev}/include -I${pkgs.zlib.dev}/include";
-      PKGCONFIG_LIBS = "-Wl,-rpath,${pkgs.openssl.out}/lib -L${pkgs.openssl.out}/lib -L${pkgs.cyrus_sasl.out}/lib -L${pkgs.zlib.out}/lib -lssl -lcrypto -lsasl2 -lz";
+      PKGCONFIG_CFLAGS = "-I${super.nixpkgs.openssl.dev}/include -I${super.nixpkgs.cyrus_sasl.dev}/include -I${super.nixpkgs.zlib.dev}/include";
+      PKGCONFIG_LIBS = "-Wl,-rpath,${super.nixpkgs.openssl.out}/lib -L${super.nixpkgs.openssl.out}/lib -L${super.nixpkgs.cyrus_sasl.out}/lib -L${super.nixpkgs.zlib.out}/lib -lssl -lcrypto -lsasl2 -lz";
     });
 
     ps = super.cran.ps.overrideDerivation (attrs: {
@@ -247,7 +247,7 @@ self: super: {
       preConfigure = "patchShebangs configure";
     });
 
-    littler = super.cran.littler.overrideAttrs (attrs: with pkgs; {
+    littler = super.cran.littler.overrideAttrs (attrs: with super.nixpkgs; {
       buildInputs = [ pcre lzma zlib bzip2 icu which ] ++ attrs.buildInputs;
       postInstall = ''
         install -d $out/bin $out/share/man/man1

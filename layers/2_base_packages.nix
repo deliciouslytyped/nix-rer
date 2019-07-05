@@ -1,7 +1,13 @@
 #TODO make sure all the things point in the right places
 self: super: {
+  buildRPackage = super.nixpkgs.callPackage ../lib/generic-builder.nix {
+    R = super.nixpkgs.R;
+    inherit (super.nixpkgs.darwin.apple_sdk.frameworks) Cocoa Foundation;
+    inherit (super.nixpkgs) gettext gfortran;
+  };
+
   #TODO figure out an acceptable casing of this
-  rWrapper = callPackage ../lib/wrapper.nix (with super.nixpkgs; { #TODO wrapper
+  rWrapper = super.nixpkgs.pkgs.callPackage ((super.nixpkgs.callPackage (import ../lib/R/rtool-wrapper.nix) {}).r) (with super.nixpkgs; { #TODO wrapper
     recommendedPackages = with rPackages; [
       boot class cluster codetools foreign KernSmooth lattice MASS
       Matrix mgcv nlme nnet rpart spatial survival
@@ -10,7 +16,7 @@ self: super: {
     packages = [];
     });
 
-  rstudioWrapper = libsForQt5.callPackage ../lib/wrappers.nix (with super.nixpkgs; { #TODO wrapper
+  rstudioWrapper = super.nixpkgs.libsForQt5.callPackage ../lib/wrappers.nix (with super.nixpkgs; { #TODO wrapper
     recommendedPackages = with rPackages; [
       boot class cluster codetools foreign KernSmooth lattice MASS
       Matrix mgcv nlme nnet rpart spatial survival
@@ -30,10 +36,12 @@ self: super: {
     inherit (darwin) libobjc;
     });
 
-  rstudio = super.nixpkgslibsForQt5.callPackage ../lib/rstudio (with super.nixpkgs; {
+  rstudio = super.nixpkgs.libsForQt5.callPackage ../lib/rstudio (with super.nixpkgs; {
     boost = boost166;
     llvmPackages = llvmPackages_7;
     });
+
+  tempWrapper = super.nixpkgs.lib.makeOverridable ({plugins ? []}: self.rWrapper.override { packages = plugins; }) {};
   }
 
 /*
