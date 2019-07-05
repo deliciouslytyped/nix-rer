@@ -1,6 +1,17 @@
-
-  otherOverrides = old: new: {
-    stringi = old.stringi.overrideDerivation (attrs: {
+#TODO packages that have an override here should not have a "simple" override TODO: enforce this
+#TODO ???no idea whats going on here
+#TODO Alphabetical sort script
+/*
+#TODO i dont get what this is for
+{pkgs, self, lib, stdenv}: {
+packagesWithRDepends = {
+  FactoMineR = [ self.car ];
+  pander = [ self.codetools ];
+};
+*/
+self: super: {
+  cran-packages = super.cran // {
+    stringi = super.cran.stringi.overrideDerivation (attrs: {
       postInstall = let
         icuName = "icudt52l";
         icuSrc = pkgs.fetchzip {
@@ -14,57 +25,52 @@
         '';
     });
 
-    xml2 = old.xml2.overrideDerivation (attrs: {
+    xml2 = super.cran.xml2.overrideDerivation (attrs: {
+      nativeBuildInputs = attrs.nativeBuildInputs ++ (lib.optionals stdenv.isDarwin [ pkgs.perl ]); #TODO test
       preConfigure = ''
         export LIBXML_INCDIR=${pkgs.libxml2.dev}/include/libxml2
         patchShebangs configure
         '';
     });
 
-    Cairo = old.Cairo.overrideDerivation (attrs: {
+    Cairo = super.cran.Cairo.overrideDerivation (attrs: {
       NIX_LDFLAGS = "-lfontconfig";
     });
 
-    curl = old.curl.overrideDerivation (attrs: {
+    curl = super.cran.curl.overrideDerivation (attrs: {
       preConfigure = "patchShebangs configure";
     });
 
-    RcppArmadillo = old.RcppArmadillo.overrideDerivation (attrs: {
+    RcppArmadillo = super.cran.RcppArmadillo.overrideDerivation (attrs: {
       patchPhase = "patchShebangs configure";
     });
 
-    data_table = old.data_table.overrideDerivation (attrs: {
+    data_table = super.cran.data_table.overrideDerivation (attrs: {
+      nativeBuildInputs = attrs.nativeBuildInputs ++ (lib.optional stdenv.isDarwin [ pkgs.which ]); #TODO test
       NIX_CFLAGS_COMPILE = attrs.NIX_CFLAGS_COMPILE
         + lib.optionalString stdenv.isDarwin " -fopenmp";
     });
 
-    rpf = old.rpf.overrideDerivation (attrs: {
+    rpf = super.cran.rpf.overrideDerivation (attrs: {
       patchPhase = "patchShebangs configure";
     });
 
-    BayesXsrc = old.BayesXsrc.overrideDerivation (attrs: {
-      patches = [ ./patches/BayesXsrc.patch ];
-    });
-
-    Rhdf5lib = old.Rhdf5lib.overrideDerivation (attrs: {
-      patches = [ ./patches/Rhdf5lib.patch ];
-    });
-
-    rJava = old.rJava.overrideDerivation (attrs: {
+    rJava = super.cran.rJava.overrideDerivation (attrs: {
       preConfigure = ''
         export JAVA_CPPFLAGS=-I${pkgs.jdk}/include/
         export JAVA_HOME=${pkgs.jdk}
       '';
     });
 
-    JavaGD = old.JavaGD.overrideDerivation (attrs: {
+    JavaGD = super.cran.JavaGD.overrideDerivation (attrs: {
       preConfigure = ''
         export JAVA_CPPFLAGS=-I${pkgs.jdk}/include/
         export JAVA_HOME=${pkgs.jdk}
       '';
     });
 
-    JuniperKernel = old.JuniperKernel.overrideDerivation (attrs: {
+    JuniperKernel = super.cran.JuniperKernel.overrideDerivation (attrs: {
+      buildInputs = attrs.buildInputs ++ (lib.optionals stdenv.isDarwin [ pkgs.darwin.binutils ]); #TODO test this
       postPatch = lib.optionalString stdenv.isDarwin ''
         for file in {R,src}/*.R; do
             sed -i 's#system("which \(otool\|install_name_tool\)"[^)]*)#"${pkgs.darwin.cctools}/bin/\1"#g' $file
@@ -75,13 +81,16 @@
       '';
     });
 
-    jqr = old.jqr.overrideDerivation (attrs: {
+    jqr = super.cran.jqr.overrideDerivation (attrs: {
       preConfigure = ''
         patchShebangs configure
         '';
     });
 
-    pbdZMQ = old.pbdZMQ.overrideDerivation (attrs: {
+    pbdZMQ = super.cran.pbdZMQ.overrideDerivation (attrs: {
+      buildInputs = attrs.buildInputs ++ (lib.optionals stdenv.isDarwin [ pkgs.darwin.binutils ]); #TODO test this
+      nativeBuildInputs = attrs.nativeBuildInputs ++ (lib.optionals stdenv.isDarwin [ pkgs.which ]);
+
       postPatch = lib.optionalString stdenv.isDarwin ''
         for file in R/*.{r,r.in}; do
             sed -i 's#system("which \(\w\+\)"[^)]*)#"${pkgs.darwin.cctools}/bin/\1"#g' $file
@@ -89,80 +98,66 @@
       '';
     });
 
-    qtbase = old.qtbase.overrideDerivation (attrs: {
-      patches = [ ./patches/qtbase.patch ];
-    });
-
-    Rmpi = old.Rmpi.overrideDerivation (attrs: {
+    Rmpi = super.cran.Rmpi.overrideDerivation (attrs: {
       configureFlags = [
         "--with-Rmpi-type=OPENMPI"
       ];
     });
 
-    Rmpfr = old.Rmpfr.overrideDerivation (attrs: {
+    Rmpfr = super.cran.Rmpfr.overrideDerivation (attrs: {
       configureFlags = [
         "--with-mpfr-include=${pkgs.mpfr.dev}/include"
       ];
     });
 
-    RVowpalWabbit = old.RVowpalWabbit.overrideDerivation (attrs: {
+    RVowpalWabbit = super.cran.RVowpalWabbit.overrideDerivation (attrs: {
       configureFlags = [
         "--with-boost=${pkgs.boost.dev}" "--with-boost-libdir=${pkgs.boost.out}/lib"
       ];
     });
 
-    RAppArmor = old.RAppArmor.overrideDerivation (attrs: {
-      patches = [ ./patches/RAppArmor.patch ];
+    RAppArmor = super.cran.RAppArmor.overrideDerivation (attrs: {
       LIBAPPARMOR_HOME = "${pkgs.libapparmor}";
     });
 
-    RMySQL = old.RMySQL.overrideDerivation (attrs: {
+    RMySQL = super.cran.RMySQL.overrideDerivation (attrs: {
       MYSQL_DIR="${pkgs.mysql.connector-c}";
       preConfigure = ''
         patchShebangs configure
       '';
     });
 
-    devEMF = old.devEMF.overrideDerivation (attrs: {
+    devEMF = super.cran.devEMF.overrideDerivation (attrs: {
       NIX_CFLAGS_LINK = "-L${pkgs.xorg.libXft.out}/lib -lXft";
       NIX_LDFLAGS = "-lX11";
     });
 
-    slfm = old.slfm.overrideDerivation (attrs: {
+    slfm = super.cran.slfm.overrideDerivation (attrs: {
       PKG_LIBS = "-L${pkgs.openblasCompat}/lib -lopenblas";
     });
 
-    SamplerCompare = old.SamplerCompare.overrideDerivation (attrs: {
+    SamplerCompare = super.cran.SamplerCompare.overrideDerivation (attrs: {
       PKG_LIBS = "-L${pkgs.openblasCompat}/lib -lopenblas";
     });
 
-    EMCluster = old.EMCluster.overrideDerivation (attrs: {
-      patches = [ ./patches/EMCluster.patch ];
-    });
-
-    spMC = old.spMC.overrideDerivation (attrs: {
-      patches = [ ./patches/spMC.patch ];
-    });
-
-    openssl = old.openssl.overrideDerivation (attrs: {
+    openssl = super.cran.openssl.overrideDerivation (attrs: {
       PKGCONFIG_CFLAGS = "-I${pkgs.openssl.dev}/include";
       PKGCONFIG_LIBS = "-Wl,-rpath,${pkgs.openssl.out}/lib -L${pkgs.openssl.out}/lib -lssl -lcrypto";
     });
 
-    Rserve = old.Rserve.overrideDerivation (attrs: {
-      patches = [ ./patches/Rserve.patch ];
+    Rserve = super.cran.Rserve.overrideDerivation (attrs: {
       configureFlags = [
         "--with-server" "--with-client"
       ];
     });
 
-    nloptr = old.nloptr.overrideDerivation (attrs: {
+    nloptr = super.cran.nloptr.overrideDerivation (attrs: {
       # Drop bundled nlopt source code. Probably unnecessary, but I want to be
       # sure we're using the system library, not this one.
       preConfigure = "rm -r src/nlopt_src";
     });
 
-    V8 = old.V8.overrideDerivation (attrs: {
+    V8 = super.cran.V8.overrideDerivation (attrs: {
       preConfigure = ''
         export INCLUDE_DIR=${pkgs.v8_3_14}/include
         export LIB_DIR=${pkgs.v8_3_14}/lib
@@ -170,39 +165,39 @@
         '';
     });
 
-    acs = old.acs.overrideDerivation (attrs: {
+    acs = super.cran.acs.overrideDerivation (attrs: {
       preConfigure = ''
         patchShebangs configure
         '';
     });
 
-    gdtools = old.gdtools.overrideDerivation (attrs: {
+    gdtools = super.cran.gdtools.overrideDerivation (attrs: {
       preConfigure = ''
         patchShebangs configure
         '';
       NIX_LDFLAGS = "-lfontconfig -lfreetype";
     });
 
-    magick = old.magick.overrideDerivation (attrs: {
+    magick = super.cran.magick.overrideDerivation (attrs: {
       preConfigure = ''
         patchShebangs configure
         '';
     });
 
-    protolite = old.protolite.overrideDerivation (attrs: {
+    protolite = super.cran.protolite.overrideDerivation (attrs: {
       preConfigure = ''
         patchShebangs configure
         '';
     });
 
-    rpanel = old.rpanel.overrideDerivation (attrs: {
+    rpanel = super.cran.rpanel.overrideDerivation (attrs: {
       preConfigure = ''
         export TCLLIBPATH="${pkgs.bwidget}/lib/bwidget${pkgs.bwidget.version}"
       '';
       TCLLIBPATH = "${pkgs.bwidget}/lib/bwidget${pkgs.bwidget.version}";
     });
 
-    RPostgres = old.RPostgres.overrideDerivation (attrs: {
+    RPostgres = super.cran.RPostgres.overrideDerivation (attrs: {
       preConfigure = ''
         export INCLUDE_DIR=${pkgs.postgresql}/include
         export LIB_DIR=${pkgs.postgresql.lib}/lib
@@ -210,33 +205,33 @@
         '';
     });
 
-    OpenMx = old.OpenMx.overrideDerivation (attrs: {
+    OpenMx = super.cran.OpenMx.overrideDerivation (attrs: {
       preConfigure = ''
         patchShebangs configure
         '';
     });
 
-    odbc = old.odbc.overrideDerivation (attrs: {
+    odbc = super.cran.odbc.overrideDerivation (attrs: {
       preConfigure = ''
         patchShebangs configure
         '';
     });
 
-    x13binary = old.x13binary.overrideDerivation (attrs: {
+    x13binary = super.cran.x13binary.overrideDerivation (attrs: {
       preConfigure = ''
         patchShebangs configure
         '';
     });
 
-    geojsonio = old.geojsonio.overrideDerivation (attrs: {
+    geojsonio = super.cran.geojsonio.overrideDerivation (attrs: {
       buildInputs = [ cacert ] ++ attrs.buildInputs;
     });
 
-    rstan = old.rstan.overrideDerivation (attrs: {
+    rstan = super.cran.rstan.overrideDerivation (attrs: {
       NIX_CFLAGS_COMPILE = "${attrs.NIX_CFLAGS_COMPILE} -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION";
     });
 
-    mongolite = old.mongolite.overrideDerivation (attrs: {
+    mongolite = super.cran.mongolite.overrideDerivation (attrs: {
       preConfigure = ''
         patchShebangs configure
         '';
@@ -244,15 +239,15 @@
       PKGCONFIG_LIBS = "-Wl,-rpath,${pkgs.openssl.out}/lib -L${pkgs.openssl.out}/lib -L${pkgs.cyrus_sasl.out}/lib -L${pkgs.zlib.out}/lib -lssl -lcrypto -lsasl2 -lz";
     });
 
-    ps = old.ps.overrideDerivation (attrs: {
+    ps = super.cran.ps.overrideDerivation (attrs: {
       preConfigure = "patchShebangs configure";
     });
 
-    rlang = old.rlang.overrideDerivation (attrs: {
+    rlang = super.cran.rlang.overrideDerivation (attrs: {
       preConfigure = "patchShebangs configure";
     });
 
-    littler = old.littler.overrideAttrs (attrs: with pkgs; {
+    littler = super.cran.littler.overrideAttrs (attrs: with pkgs; {
       buildInputs = [ pcre lzma zlib bzip2 icu which ] ++ attrs.buildInputs;
       postInstall = ''
         install -d $out/bin $out/share/man/man1
@@ -263,5 +258,5 @@
         rm -r $out/library/littler/script-tests
       '';
     });
-
   };
+}

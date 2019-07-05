@@ -1,7 +1,7 @@
 #ok so what seems to be going on here is this uses the transpose approach of a attrib-[package],
 #as opposed the usual package-[attribs]
 {lib}: rec {
-  defaultOverrides = old: new:
+  defaultOverrides = overrides: old:
     let
       oa = s: overrides: old: overrideDerivationsByAttr s overrides old;
       ob = s: v: packageNames: old: overrideFunctionsByArgument s v packageNames old;
@@ -10,15 +10,14 @@
       compose = (a: b: (update a) b);
       result = lib.foldr compose old [
         #Note these are 1 parameter functions taking the previous old set
-        (ob "requireX" true packagesRequireingX) #TODO this is the lowest layer, is the fold correct?
-        (ob "doCheck" false packagesToSkipCheck)
-        (overrideRDepends packagesWithRDepends)
-        (oa "nativeBuildInputs" packagesWithNativeBuildInputs)
-        (oa "buildInputs" packagesWithBuildInputs)
-        (ob "broken" true brokenPackages)
+        (ob "requireX" true overrides.requireX) #TODO this is the lowest layer, is the fold correct?
+        (ob "doCheck" false overrides.skipCheck)
+        (oa "nativeBuildInputs" overrides.pkgsNativeBuildInputs)
+        (oa "buildInputs" overrides.pkgsBuildInputs)
+        (ob "broken" true overrides.broken)
         ] old;
     in
-      result // (otherOverrides result new);
+      result // (otherOverrides result);
 
   overrideDerivationsByAttr = attr: overrides: old:
     let
@@ -38,18 +37,11 @@
     in
       builtins.listToAttrs (map genPair packageNames);
 
-  ####################
-  #  overrideDerivationsByAttr "nativeBuildInputs" overrides old;
-  #  overrideDerivationsByAttr "buildInputs" overrides old;
-
+/*
   #TODO hopefully this actually works
-  overrideRDepends = overrides: old:
+  #(overrideRDepends packagesWithRDepends)
+  overrideRDepends = overrides: old: #TODO the entrries here were hanging off self thoug or something so this might otherwise be unnecessarry but i didnt really get what was going on there
       overrideDerivationsByAttr "propagatedNativeBuildInputs" overrides (
       overrideNativeBuildInputs overrides old
       );
-
-  ####################
-  #  overrideFunctionsByArgument "requireX" true packageNames old;
-  #  overrideFunctionsByArgument "doCheck" false packageNames old;
-  #  overrideFunctionsByArgument "broken" true packageNames old;
-  }
+*/

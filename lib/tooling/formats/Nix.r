@@ -20,7 +20,7 @@ genNix <- function(mirror, pkgs, knownPackages, packagesFile){ #TODO should mirr
   #TODO try to move to having the nix stuff handle this using json dbs <- i.e. feed the arguments to derive from nix, using a json db of mirrors, requires nix rewrite
   deriveStr <- sprintf('name = "%s"; version = "%s";', mirror$name, mirror$version) 
   
-  pkgs <- addHashes(pkgs, mirror)
+  pkgs <- addHashes(pkgs, mirror, mode="nix")
   
   wat <- datmap(pkgs, function(p) {
     deps <- toDeps(p[c("Depends", "Imports", "LinkingTo")], knownPackages);
@@ -32,10 +32,10 @@ genNix <- function(mirror, pkgs, knownPackages, packagesFile){ #TODO should mirr
   template <- readFile(paste0(sourceDir, "/packages-template.txt"))
   command <- paste0(commandLine, collapse=" ")
   #Use %1$ style formatters to access the arguments.
-  sprintf(template, command, packagesFile, deriveStr, entries)
+  sprintf(template, command, packagesFile, deriveStr, entries, paste(mirror, collapse=";")) #TODO
 }
 
 nixfetchcached <- function(name, version, packagesFile){
-  readFormatted <- as.data.table(read.table(skip=8, sep='"', text=head(readLines(packagesFile), -2))) #Pretty crap way to do it but its not like we have a full parser
+  readFormatted <- as.data.table(read.table(skip=9, sep='"', text=head(readLines(packagesFile), -2))) #Pretty crap way to do it but its not like we have a full parser
   result <- as.character(readFormatted$V6[ readFormatted$V2 == name & readFormatted$V4 == version ])
 }

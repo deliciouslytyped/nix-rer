@@ -1,0 +1,17 @@
+Documentation for the R package description formats:
+
+Relevant libraries:
+
+Sites for R docmentation (?):
+https://www.rdocumentation.org/
+
+TODO description of the directory structure on https://cran.r-project.org/src/contrib/PACKAGES
+misc: https://stat.ethz.ch/R-manual/R-devel/RHOME/library/tools/html/writePACKAGES.html see the see also section as well
+http://r-pkgs.had.co.nz/description.html
+! https://github.com/r-lib/desc/tree/4f60833fdb6d1aae4cbf09b7eb293c5fa0770e5c
+? https://github.com/metacran
+https://stackoverflow.com/questions/4090169/elegant-way-to-check-for-missing-packages-and-install-them
+
+
+DEBUG TODO RELATED
+https://stackoverflow.com/questions/45513058/what-does-linkingto-do-in-an-r-package

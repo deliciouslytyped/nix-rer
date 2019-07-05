@@ -1,0 +1,805 @@
+{
+  "packages": {
+    "A3": {
+      "version": "1.0.0",
+      "sha256": "017hq9pjsv1h9i7cqk5cfx27as54shlhdsdvr6jkhb8jfkpdb6cw",
+      "deps": {
+        "known": ["xtable", "pbapply"],
+        "unknown": []
+      }
+    },
+    "ABC.RAP": {
+      "version": "0.9.0",
+      "sha256": "1kdspln17v0krvahcd55vib4dv5azp60b3r1zf489x10qqbp1mxk",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ABCanalysis": {
+      "version": "1.2.1",
+      "sha256": "0wac1ksmnxa36v99ca4hv8k0rsh3igwpcllmlv9wf7i9kgqviqwi",
+      "deps": {
+        "known": ["plotrix"],
+        "unknown": []
+      }
+    },
+    "ABCoptim": {
+      "version": "0.15.0",
+      "sha256": "1ih0xk88qhsmpvnxf56041wx5sk8as2f4f2gdnpnwdym9mbr9n4b",
+      "deps": {
+        "known": ["Rcpp", "Rcpp"],
+        "unknown": []
+      }
+    },
+    "ABCp2": {
+      "version": "1.2",
+      "sha256": "1s2skkxpzss7c29i8600psgrp0hl46jcrxqrmy2b4db8hc0kcnbx",
+      "deps": {
+        "known": ["MASS"],
+        "unknown": []
+      }
+    },
+    "ABHgenotypeR": {
+      "version": "1.0.1",
+      "sha256": "08cpmnaaxsm5c5bjifnfxdlvg5inrf13biqpcl2yq5zpqjmiki0l",
+      "deps": {
+        "known": ["ggplot2", "reshape2"],
+        "unknown": []
+      }
+    },
+    "ABPS": {
+      "version": "0.3",
+      "sha256": "0n3f66nmfi5v94il1mxy026mi84w01ph2aljk60vn3mrz8kwf2ll",
+      "deps": {
+        "known": ["kernlab"],
+        "unknown": []
+      }
+    },
+    "ACA": {
+      "version": "1.1",
+      "sha256": "1i3hm27nvnkvc39xlh0d1blq8q0q02czmvgi3cazmjx3jvxay0vq",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ACCLMA": {
+      "version": "1.0",
+      "sha256": "1na27sp18fq12gp6vxgqw1ffsz2yi1d8xvrxbrzx5g1kqxrayy0v",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ACD": {
+      "version": "1.5.3",
+      "sha256": "1a67bi3hklq8nlc50r0qnyr4k7m9kpvijy8sqqpm54by5hsysfd6",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ACDm": {
+      "version": "1.0.4",
+      "sha256": "0b4f02ga5ra66mbrm79g0bnlzmii82rks9kmxixxqgf18yhlyjil",
+      "deps": {
+        "known": ["plyr", "dplyr", "ggplot2", "Rsolnp", "zoo"],
+        "unknown": []
+      }
+    },
+    "ACEt": {
+      "version": "1.8.0",
+      "sha256": "0626d6kg485xjya164wagrr5z223jvi93ywbwpdns7fkm03c0dlq",
+      "deps": {
+        "known": ["Rcpp", "MASS", "BH", "RcppArmadillo", "Rcpp"],
+        "unknown": []
+      }
+    },
+    "ACMEeqtl": {
+      "version": "1.6",
+      "sha256": "049xjv2ym35bbn43zwi68cq27fwdh404vp0r2ca5gxgmmx8kj1cz",
+      "deps": {
+        "known": ["filematrix"],
+        "unknown": []
+      }
+    },
+    "ACNE": {
+      "version": "0.8.1",
+      "sha256": "0kzapsalzw6jsi990qicp4glijh5ddnfimsg5pidgbwxg4i05grl",
+      "deps": {
+        "known": ["aroma.affymetrix", "MASS", "R.methodsS3", "R.oo", "R.utils", "matrixStats", "R.filesets", "aroma.core"],
+        "unknown": []
+      }
+    },
+    "ACSNMineR": {
+      "version": "0.16.8.25",
+      "sha256": "0gh604s8qall6zfjlwcg2ilxjvz08dplf9k5g47idhv43scm748l",
+      "deps": {
+        "known": ["ggplot2", "gridExtra", "scales"],
+        "unknown": []
+      }
+    },
+    "ACSWR": {
+      "version": "1.0",
+      "sha256": "195vjrkang5cl7gwsna0aq4p0h4jym9xg9yh94bnf8vq6wf8j83n",
+      "deps": {
+        "known": ["MASS"],
+        "unknown": []
+      }
+    },
+    "ACTCD": {
+      "version": "1.2-0",
+      "sha256": "0mzjxxr2zfdidw8ibh6w8mvpkw3q3nvngqi05g9ind26ckvk053p",
+      "deps": {
+        "known": ["R.methodsS3", "GDINA"],
+        "unknown": []
+      }
+    },
+    "ADAPTS": {
+      "version": "0.9.20",
+      "sha256": "1ik9bc8adpz5gphg36grx2hvq76gf1x3yblxp4dj7vhcqva11kzl",
+      "deps": {
+        "known": ["missForest", "e1071", "WGCNA", "ComICS", "pheatmap", "doParallel", "quantmod", "preprocessCore", "pcaMethods", "foreach", "DeconRNASeq", "nnls"],
+        "unknown": []
+      }
+    },
+    "ADCT": {
+      "version": "0.1.0",
+      "sha256": "1glf83ydx4v3ld8c4gb9h3jk6srd054bis5l8k57p1ba4fnqnnpp",
+      "deps": {
+        "known": ["mvtnorm"],
+        "unknown": []
+      }
+    },
+    "ADDT": {
+      "version": "2.0",
+      "sha256": "044bb1jw2m8vwk5q8l7rlz4kqphjvy8i9d59rjg0k5q5l9vczfrp",
+      "deps": {
+        "known": ["nlme", "Matrix", "coneproj"],
+        "unknown": []
+      }
+    },
+    "ADGofTest": {
+      "version": "0.3",
+      "sha256": "0ik817qzqp6kfbckjp1z7srlma0w6z2zcwykh0jdiv7nahwk3ncw",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ADMM": {
+      "version": "0.3.1",
+      "sha256": "121hqglivik65gv657bdv7a8kzgvrwgwckz2h746fcibv2s7dfsi",
+      "deps": {
+        "known": ["Rcpp", "Matrix", "Rdpack", "doParallel", "foreach", "Rcpp", "RcppArmadillo"],
+        "unknown": []
+      }
+    },
+    "ADMMnet": {
+      "version": "0.1",
+      "sha256": "15f1zhgv7xai954qz2ahj4kpxyvr2svxpmybz7j43bhjpkq72dmq",
+      "deps": {
+        "known": ["Matrix", "Rcpp", "Rcpp", "RcppEigen"],
+        "unknown": []
+      }
+    },
+    "ADMMsigma": {
+      "version": "2.1",
+      "sha256": "1943dza086s22pr0yz41wzn9cdg11x7fl9zr3w012865yj219m7l",
+      "deps": {
+        "known": ["Rcpp", "RcppProgress", "doParallel", "foreach", "ggplot2", "dplyr", "Rcpp", "RcppArmadillo", "RcppProgress"],
+        "unknown": []
+      }
+    },
+    "ADPF": {
+      "version": "0.0.1",
+      "sha256": "1n7302xx77ngvp9i2h582i1mqslzllcdr0bn3pl2zk9jd8k97p7n",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ADPclust": {
+      "version": "0.7",
+      "sha256": "0s47cpsjykn7imsssa9w9b6g9d1sz2yah78yqzxmh0i3lqd757c1",
+      "deps": {
+        "known": ["dplyr", "cluster", "fields", "knitr"],
+        "unknown": []
+      }
+    },
+    "AEDForecasting": {
+      "version": "0.20.0",
+      "sha256": "16q2sn5zzvysyy3r32jnr21pbdkkn0k0sbarni6fdkx7pj27yijn",
+      "deps": {
+        "known": ["changepoint", "forecast", "signal"],
+        "unknown": []
+      }
+    },
+    "AER": {
+      "version": "1.2-6",
+      "sha256": "0x4l8ridghxlqjvq5wyv34yvy8mj5bzjrw9cik7f069q4lnklg35",
+      "deps": {
+        "known": ["car", "lmtest", "sandwich", "survival", "zoo", "Formula"],
+        "unknown": []
+      }
+    },
+    "AF": {
+      "version": "0.1.5",
+      "sha256": "1r87ra55g0qm2s8cgsmdwck93ia2vr8zfab3in45mxm5xc501xgk",
+      "deps": {
+        "known": ["survival", "drgee", "stdReg", "data.table", "ivtools"],
+        "unknown": []
+      }
+    },
+    "AFM": {
+      "version": "1.2.6",
+      "sha256": "0yngk3j1wkamqzrwibn2csbn61jbdb872n0gi4d3hyhgilqzwbwf",
+      "deps": {
+        "known": ["data.table", "stringr", "gstat", "fractaldim", "rgl", "pracma", "gridExtra", "moments", "ggplot2", "sp", "png", "plyr", "igraph", "shiny", "shinyjs", "scales", "dbscan", "mixtools", "fftwtools"],
+        "unknown": []
+      }
+    },
+    "AFheritability": {
+      "version": "0.1.0",
+      "sha256": "03w0a4z2x539ykyzdxm1mfqkhzz03cg0aqvgi062jrrm5m6f57ix",
+      "deps": {
+        "known": ["reshape2", "mvtnorm", "ggplot2", "shiny"],
+        "unknown": []
+      }
+    },
+    "AGD": {
+      "version": "0.39",
+      "sha256": "0hmq684snnffc2v7vmns4ky200a6zh1ggiap03n5cvpb3nlqc6lr",
+      "deps": {
+        "known": ["gamlss", "gamlss.dist"],
+        "unknown": []
+      }
+    },
+    "AGHmatrix": {
+      "version": "0.0.5",
+      "sha256": "015wyvrrry4vfdg6qhjj3phjnrdx9707sp2mpf7fr67n2irc65d5",
+      "deps": {
+        "known": ["Matrix"],
+        "unknown": []
+      }
+    },
+    "AGSDest": {
+      "version": "2.3.2",
+      "sha256": "0f3qchvdi2n1cr8ipjj332dw8hdza58dvfk21p0c6bhmxzg7f71i",
+      "deps": {
+        "known": ["ldbounds"],
+        "unknown": []
+      }
+    },
+    "AGread": {
+      "version": "0.2.2",
+      "sha256": "08d705fh11ksxijqjlc3ny7rclq7hw12f161h277fjdx71wgn8hp",
+      "deps": {
+        "known": ["anytime", "binaryLogic", "data.table", "DescTools", "dplyr", "GGIR", "lubridate", "magrittr", "rlang", "seewave", "stringr"],
+        "unknown": []
+      }
+    },
+    "AHMbook": {
+      "version": "0.1.4",
+      "sha256": "1cxyk420pzhh1scagxjmpm328xrcc1mpdrrch92yfgbgx09zkr4c",
+      "deps": {
+        "known": ["unmarked", "plotrix", "raster", "sp", "RandomFields", "coda"],
+        "unknown": []
+      }
+    },
+    "AHR": {
+      "version": "1.5.0",
+      "sha256": "0sscw80cz4r1xmdymp9knz0dfans7yzwjwklv7ahafxlflw5527h",
+      "deps": {
+        "known": ["survival", "MASS", "etm", "Rcpp", "Rcpp", "RcppArmadillo"],
+        "unknown": []
+      }
+    },
+    "AICcmodavg": {
+      "version": "2.2-2",
+      "sha256": "0kpdl31wmwk5i4cqcwlm66c9s0c2b793army9dx50hdgrrzqc0na",
+      "deps": {
+        "known": ["lattice", "MASS", "Matrix", "nlme", "survival", "unmarked", "VGAM", "xtable"],
+        "unknown": []
+      }
+    },
+    "AID": {
+      "version": "2.4",
+      "sha256": "1r29kf2vnh1jhrhx22a176xbvhxjn12pcvdb7x3bd6qw5q3z2l0d",
+      "deps": {
+        "known": ["MASS", "tseries", "nortest", "ggplot2", "psych"],
+        "unknown": []
+      }
+    },
+    "AIG": {
+      "version": "0.1.9",
+      "sha256": "1jnnfmcwxcv4fsdcz7jb2lgczxdwrq3qxg2bhsh1610iwz4gzii7",
+      "deps": {
+        "known": ["mgcv", "dplyr", "rgl", "magrittr"],
+        "unknown": []
+      }
+    },
+    "AIM": {
+      "version": "1.01",
+      "sha256": "11lkfilxk265a7jkc1wq5xlgxa56xhg302f1q9xb7gmjnzdigb21",
+      "deps": {
+        "known": ["survival", "survival"],
+        "unknown": []
+      }
+    },
+    "ALA4R": {
+      "version": "1.7.0",
+      "sha256": "1vprq3w8pzla2ffsalpqgzkdv8wqialr45sq0qa0xjdlsrdwxipp",
+      "deps": {
+        "known": ["assertthat", "data.table", "digest", "httr", "jsonlite", "sp", "stringr", "wellknown"],
+        "unknown": []
+      }
+    },
+    "ALDqr": {
+      "version": "1.0",
+      "sha256": "0gk8hxh4p0fi47sf1zsvvxxbzp38vzk60wh8hmc63phnjab6qkv4",
+      "deps": {
+        "known": ["HyperbolicDist", "sn"],
+        "unknown": []
+      }
+    },
+    "ALEPlot": {
+      "version": "1.1",
+      "sha256": "0bakl8a7xda7vh9zsc66kkd5w5jmb5j28kfwpfq2ifvk2mrakr3w",
+      "deps": {
+        "known": ["yaImpute"],
+        "unknown": []
+      }
+    },
+    "ALS": {
+      "version": "0.0.6",
+      "sha256": "1swrn39vy50fazkpf97r7c542gkj6mlvy8gmcxllg7mf2mqx546a",
+      "deps": {
+        "known": ["nnls", "Iso"],
+        "unknown": []
+      }
+    },
+    "ALSCPC": {
+      "version": "1.0",
+      "sha256": "0ippxzq5qwb9dnpvm1kxhc0fxh83rs9ny5rcvd30w2bp632q9qdx",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ALSM": {
+      "version": "0.2.0",
+      "sha256": "1g7zk8q462j4faq5wzzghkjc003ny6rj8hrymsgvh3fg3a72lvy3",
+      "deps": {
+        "known": ["leaps", "SuppDists", "car"],
+        "unknown": []
+      }
+    },
+    "ALTopt": {
+      "version": "0.1.1",
+      "sha256": "0frpnycnljz6r24cg4z99ivm3rbg9j1nxfkhw18vbrb7gcl1hqj6",
+      "deps": {
+        "known": ["cubature", "lattice"],
+        "unknown": []
+      }
+    },
+    "AMAP.Seq": {
+      "version": "1.0",
+      "sha256": "0z0rrzps6rm58k4m1ybg77s3w05m5zfya4x8ril78ksxsjwi3636",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "AMCP": {
+      "version": "0.0.4",
+      "sha256": "051xvnr4zc25w00kh4gkffgigmhmcbqpwh9654jv37glr8ip2v3l",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "AMCTestmakeR": {
+      "version": "1.0.0",
+      "sha256": "1vgncc61gmqhax2a7072jb36bzkycv80xqihkr5qs8jxnqqkndxd",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "AMGET": {
+      "version": "1.0",
+      "sha256": "18wdzzg5wr7akbd1iasa4mvmy44fb2n5gpghwcrx80knnicy3dxq",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "AMIAS": {
+      "version": "1.1.0",
+      "sha256": "08scimlbr22cjr6fqi13rsvpc52sp4psnhrwir5pfl6qcpl1k22j",
+      "deps": {
+        "known": ["zoo", "limSolve", "Matrix"],
+        "unknown": []
+      }
+    },
+    "AMModels": {
+      "version": "0.1.4",
+      "sha256": "18h075bzk8s75b3zmjd0x8c6dpl40445d4kv8n0p4ldnx80b1aha",
+      "deps": {
+        "known": ["unmarked"],
+        "unknown": []
+      }
+    },
+    "AMOEBA": {
+      "version": "1.1",
+      "sha256": "1npzh3rpfnxd4r1pj1hm214sfgbw4wmq4ws093lnl7pvsl0q37xn",
+      "deps": {
+        "known": ["snowfall", "rlecuyer", "spdep"],
+        "unknown": []
+      }
+    },
+    "AMORE": {
+      "version": "0.2-15",
+      "sha256": "00zfqcsah2353mrhqkv8bbh24l8gaxk4y78icr9kxy4pqb2988yz",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "AMR": {
+      "version": "0.7.1",
+      "sha256": "1dgdiaa0xfdgdyaps2mx7xb4zis8rf5npa9cr2lz72nlhh3b0h5h",
+      "deps": {
+        "known": ["backports", "crayon", "data.table", "dplyr", "ggplot2", "hms", "knitr", "microbenchmark", "rlang", "scales", "tidyr"],
+        "unknown": []
+      }
+    },
+    "ANN2": {
+      "version": "2.3.2",
+      "sha256": "0ib6cs2az0hhfg7vj4dk6fxbwjlc305psqjs188fdya2jrxgq1gs",
+      "deps": {
+        "known": ["Rcpp", "reshape2", "ggplot2", "viridisLite", "Rcpp", "RcppArmadillo", "testthat"],
+        "unknown": []
+      }
+    },
+    "ANOM": {
+      "version": "0.5",
+      "sha256": "14nfy9xplbabfprwxz5fvx26nmqhp657vr6d90dc8vk8ds63ckiz",
+      "deps": {
+        "known": ["ggplot2", "MCPAN", "multcomp", "nparcomp", "SimComp"],
+        "unknown": []
+      }
+    },
+    "ANOVA.TFNs": {
+      "version": "1.0",
+      "sha256": "0dwspvxj2gzyvxsd9xyhv47n1hjlqa7z9qza4h3hn1xda12vkjly",
+      "deps": {
+        "known": ["FuzzyNumbers"],
+        "unknown": []
+      }
+    },
+    "ANOVAShiny": {
+      "version": "0.1.0",
+      "sha256": "1z8wi8c8j3rlchfk1vx101qz1r9j2jl5lfh72y5lqsisqxl2fyyz",
+      "deps": {
+        "known": ["shiny", "rmarkdown", "dplyr", "rhandsontable", "DescTools", "HH"],
+        "unknown": []
+      }
+    },
+    "ANOVAreplication": {
+      "version": "1.1.3",
+      "sha256": "1cmps21lrmk6lh6gx0q9fz2736q7cibfcisvir6hnik3ablv70bn",
+      "deps": {
+        "known": ["quadprog", "shiny"],
+        "unknown": []
+      }
+    },
+    "APCanalysis": {
+      "version": "1.0",
+      "sha256": "11snn5i8zyjpzf58ica762fpp14v7x5h8a8iwx4s4v81pgvlx862",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "APFr": {
+      "version": "1.0.2",
+      "sha256": "1vax7rfccds6qz3bi6n1h3nzl9jnxpwk331wmpsbqlk23md3m4g4",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "APML0": {
+      "version": "0.9",
+      "sha256": "1scvcrcsjgdrq9gfv8qxbd703k76cyk01ml93bcr8j8kiwv05z0f",
+      "deps": {
+        "known": ["Matrix", "Rcpp", "Rcpp", "RcppEigen"],
+        "unknown": []
+      }
+    },
+    "APPEstimation": {
+      "version": "0.1.1",
+      "sha256": "1bg9ma4i3k3xdgyk2h4f368gqnczvlhvjw4114iznmrv1wl4g25c",
+      "deps": {
+        "known": ["densratio"],
+        "unknown": []
+      }
+    },
+    "APSIM": {
+      "version": "0.9.3",
+      "sha256": "1pqyy170h2s0kv7nf9v6xr8lgp8yh4psnmpi0naghjg7h72bl53k",
+      "deps": {
+        "known": ["data.table", "lubridate", "stringr", "plyr", "sirad", "RSQLite"],
+        "unknown": []
+      }
+    },
+    "APSIMBatch": {
+      "version": "0.1.0.2374",
+      "sha256": "0j44ijq1v1k60lka9nmw8m1jfjw7pidny9bvswqy5v82gzmwl29d",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "APfun": {
+      "version": "0.1.3",
+      "sha256": "02p40n4l66r63wq8x7ygchfhxmnpaa7vgy4bjhkqx5gfi2v4psxd",
+      "deps": {
+        "known": ["sp", "raster", "rgdal", "yesno", "maptools"],
+        "unknown": []
+      }
+    },
+    "APtools": {
+      "version": "6.8.8",
+      "sha256": "171aydyd7s8qll7djl4ysy596wxdf5wfwpqwfi14jjglc9r9qrrr",
+      "deps": {
+        "known": ["survival"],
+        "unknown": ["cmprsk"]
+      }
+    },
+    "AR": {
+      "version": "1.1",
+      "sha256": "1wn4g2997c4vc3mzq2pv8ld0ryp0i78v4zlqqryvhshxgnz4f2pr",
+      "deps": {
+        "known": ["DISTRIB"],
+        "unknown": []
+      }
+    },
+    "AR1seg": {
+      "version": "1.0",
+      "sha256": "0v9adx5wj9r4jwl3bqqmj0byiqfp585jz013qfqrq601wj8v4zi3",
+      "deps": {
+        "known": ["Segmentor3IsBack"],
+        "unknown": []
+      }
+    },
+    "ARCensReg": {
+      "version": "2.1",
+      "sha256": "05zjk1wxqfigzg80lvx1940a059jfdr9zbzgzmz2n01glj1lvj63",
+      "deps": {
+        "known": ["mvtnorm", "tmvtnorm", "msm", "numDeriv"],
+        "unknown": []
+      }
+    },
+    "ARHT": {
+      "version": "0.1.0",
+      "sha256": "1fz81a202r8vk655dg6a03zfq3gfkimqjvmc95k3j02xz0iv58kn",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ARIbrain": {
+      "version": "0.2",
+      "sha256": "18c7yxkrnqh18gcfzvdc5wqig6ywdmjcy8rlz0fdj3b8fb84dfpr",
+      "deps": {
+        "known": ["hommel", "RNifti", "plyr"],
+        "unknown": []
+      }
+    },
+    "AROC": {
+      "version": "1.0",
+      "sha256": "1mmcd8nqwzaqghzbcrv0g767j57svzvlzgk71ir61vvjhsk91dkg",
+      "deps": {
+        "known": ["np", "Matrix", "Hmisc", "MASS", "moments"],
+        "unknown": []
+      }
+    },
+    "ARPobservation": {
+      "version": "1.2.0",
+      "sha256": "1kgflalpymbsfzwg4c70mdxgrbsg8r8z44433v3y9rymhfyq9nmj",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ART": {
+      "version": "1.0",
+      "sha256": "186w1ivj5v3h906crl953qxgai5wiznaih83dgvwgnmabs9p1wvk",
+      "deps": {
+        "known": ["car"],
+        "unknown": []
+      }
+    },
+    "ARTIVA": {
+      "version": "1.2.3",
+      "sha256": "1jdvsslc8parz7wibcv51fx62brl2mc6i482hz43j1npsms2z1hl",
+      "deps": {
+        "known": ["MASS", "igraph", "gplots"],
+        "unknown": []
+      }
+    },
+    "ARTP": {
+      "version": "2.0.5",
+      "sha256": "0lwvhf5lamw28sd41vrhyin8ab92rl93j1ahk0aacwvnikgmfkpj",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ARTP2": {
+      "version": "0.9.45",
+      "sha256": "12nqxry2jkl1n07rbms38mrnp39cn00d0h272d9f1z5x883flv62",
+      "deps": {
+        "known": ["Formula", "data.table"],
+        "unknown": []
+      }
+    },
+    "ARTool": {
+      "version": "0.10.6",
+      "sha256": "1wln9s3j3bs5svykp3as483q61fvlfsdcjlb8cs3mzw43nlp591i",
+      "deps": {
+        "known": ["lme4", "car", "plyr", "magrittr", "dplyr"],
+        "unknown": []
+      }
+    },
+    "ARpLMEC": {
+      "version": "1.0",
+      "sha256": "0irgyf8acg1qn60npchvs258d0cf6cxm53xw0s8qg8iyqns52p75",
+      "deps": {
+        "known": ["Matrix", "gmm", "sandwich", "mvtnorm", "tmvtnorm", "numDeriv", "MASS", "lmec", "mnormt"],
+        "unknown": []
+      }
+    },
+    "ASGS.foyer": {
+      "version": "0.2.1",
+      "sha256": "0f0bl1fxda012d8pgqpaqb80m0nn490xih3ddscfqgb87zgrp4sx",
+      "deps": {
+        "known": ["sp"],
+        "unknown": []
+      }
+    },
+    "ASIP": {
+      "version": "0.4.9",
+      "sha256": "06f1nvy920vyx3bmdi77mwvfsn32xsfxaslhagnf1zh652vfkbwi",
+      "deps": {
+        "known": ["raster", "rgdal", "stringr"],
+        "unknown": []
+      }
+    },
+    "ASMap": {
+      "version": "1.0-4",
+      "sha256": "0xnrl8jhbvbc789w5gc9dz7j7gzc7wsc94a3d2wdplrmxn186nrb",
+      "deps": {
+        "known": ["qtl", "gtools", "fields", "RColorBrewer", "lattice"],
+        "unknown": []
+      }
+    },
+    "ASPBay": {
+      "version": "1.2",
+      "sha256": "0b1qpyvmj7z10ixrmdxp42bj9s72c1l9rihzmv9p58f12a5aznjz",
+      "deps": {
+        "known": ["hexbin", "Rcpp", "Rcpp", "RcppArmadillo"],
+        "unknown": []
+      }
+    },
+    "ASSA": {
+      "version": "1.0",
+      "sha256": "0xdmkl3qy1i6rb5wpiw6rqhz5c88zg9nav7qll235jvxwh3388xk",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ASSISTant": {
+      "version": "1.4.2",
+      "sha256": "1vh1glk83lg010v2fc289gr6xy0dzbrqcjfva2mmaymk6v78a1w5",
+      "deps": {
+        "known": ["R6", "mvtnorm", "knitr", "magrittr", "dplyr"],
+        "unknown": []
+      }
+    },
+    "ASSOCShiny": {
+      "version": "0.1.0",
+      "sha256": "1g1ba9d5ywd3gbwjb36xnms8l15dg1vwc6r0nsb5adhpb602xsw1",
+      "deps": {
+        "known": ["shiny", "rmarkdown", "arules", "arulesViz", "shinyMatrix", "plotly", "dplyr"],
+        "unknown": []
+      }
+    },
+    "AST": {
+      "version": "0.1.0",
+      "sha256": "0z5dw5qw0i61v4796ms7pp66f9y4ylxrcls31ixzcmkklh3rcnp3",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ATE": {
+      "version": "0.2.0",
+      "sha256": "1i46ivb7q61kq11z9v1rlnwad914nsdjcz9bagqx17vjk160mc0a",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "ATR": {
+      "version": "0.1-0",
+      "sha256": "0ljrpix3ksi0v38sfb25s2dlfj1yjbvwcz147dk2v2c24cn3r816",
+      "deps": {
+        "known": ["partykit"],
+        "unknown": []
+      }
+    },
+    "ATmet": {
+      "version": "1.2",
+      "sha256": "047ibxxf5si45zw22zy8a1kpj36q0pd3bsmxwvn0dhf4h65ah0zz",
+      "deps": {
+        "known": ["DiceDesign", "lhs", "metRology", "msm", "sensitivity"],
+        "unknown": []
+      }
+    },
+    "AUC": {
+      "version": "0.3.0",
+      "sha256": "0ripcib2qz0m7rgr1kiz68nx8f6p408l1ww7j78ljqik7p3g41g7",
+      "deps": {
+        "known": [],
+        "unknown": []
+      }
+    },
+    "AUCRF": {
+      "version": "1.1",
+      "sha256": "00d7jcg2dyvf7sc9w7vxxd85m7nsbcmfqsavrv236vxfpfc9yn7i",
+      "deps": {
+        "known": ["randomForest"],
+        "unknown": []
+      }
+    },
+    "AUtests": {
+      "version": "0.98",
+      "sha256": "0m2nl55qfwfzlf92f43b9q75xqvrlx7qzcz6qlnjbjcr80s0qj9q",
+      "deps": {
+        "known": ["logistf"],
+        "unknown": []
+      }
+    },
+    "AWR": {
+      "version": "1.11.189",
+      "sha256": "0q9ss6cyx8vv85zif5v4s2bkv0amhyvzbs41mjjgmwb1csg53jgd",
+      "deps": {
+        "known": ["rJava"],
+        "unknown": []
+      }
+    },
+    "AWR.Athena": {
+      "version": "2.0.6-1",
+      "sha256": "0kp5g9fcjdx5904l6b5l03h80hiqq12xx3jlj67y7w9brr2aj5qr",
+      "deps": {
+        "known": ["RJDBC", "rJava"],
+        "unknown": []
+      }
+    },
+    "AWR.KMS": {
+      "version": "0.1",
+      "sha256": "00aqhyqlncsv0vfcyhaazxaclwm63v5kscssash7529avdwd4gqg",
+      "deps": {
+        "known": ["AWR", "rJava", "jsonlite"],
+        "unknown": []
+      }
+    }
+  },
+  "mirror": "cran"
+}

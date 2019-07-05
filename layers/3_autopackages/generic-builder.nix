@@ -7,7 +7,7 @@ let
     runHook pre${p}
     ${s}
     runHook post${p}
-    ''
+    '';
 in
 stdenv.mkDerivation ({
   buildInputs = buildInputs ++ [R gettext] ++
@@ -23,7 +23,7 @@ stdenv.mkDerivation ({
     runHook postConfigure
   '';
 
-  buildPhase = wrapHook "Build";
+  buildPhase = wrapHook "Build" "";
 
   installFlags = if attrs.doCheck or true then
     []

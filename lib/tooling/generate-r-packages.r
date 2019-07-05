@@ -1,3 +1,4 @@
+#TODO output to stdout unless specifically told to overwrite file
 #TODO cross mode cache?
 #TODO should I just scrap this whole thing, dump to json, and add the hash adding step?
 #TODO go back through r issues filed in nixpkgs and related commits and see if i still address them
@@ -28,6 +29,7 @@ library(desc) #For parsing deps
 library(utils)
 sourceDir <- getSrcDirectory(function(dummy) {dummy}) # man what a mess https://stackoverflow.com/a/36276269
 source(sprintf("%s/nix.r", sourceDir))
+source(sprintf("%s/json.r", sourceDir))
 
 commandLine <- commandArgs()
 
@@ -53,21 +55,21 @@ readFile <- function(fileName){
 
 #main function
 #lst <- loadMirrorList(); m <- chooseMirror(c("","cran"), lst); ww <- getManifests(m, lst); xxx <- genNix(m, ww$these[1:1,], ww$known, "cran-packages.nix") ; cat(xxx)
-generateDB <- function(){
+generateDB <- function(mode="nix"){
   #commandArgs() %>%
   #  chooseMirror(loadMirrorList()) %>%
   #  getManifests(mirrors) %>% 
   #  addHashes(mirror) %>% #TODO map over getmanifests
   #  writeDB(mode="nix")
 
-  mode <- "nix"
   commandLine <- c("", "cran")
   
   mirrors <- loadMirrorList()
   mirror <- chooseMirror(commandLine, mirrors)
   packagesFile <- sprintf("%s/%s-packages.%s", sourceDir, mirror$name, mode) #TODO change dir
   pkgs <- getManifests(mirror, mirrors) #TODO this looks weird because youd think getmanifests should be getmanifest and only needs to look at one package set instead of theentire mirrors structure. the question is how do names interact across r package sets?
-  result <- genNix(mirror, pkgs$these, pkgs$known, packagesFile)
+  gen <- function(a,b,c,d,e) {(if(e == "nix") {genNix} else {genJSON})(a,b,c,d)}
+  result <- gen(mirror, pkgs$these, pkgs$known, packagesFile,mode)
   write(result, packagesFile) #TODO periodic update so you can interrupt it
 }
 
@@ -106,10 +108,10 @@ getManifests <- function(mirror, data){ #TODO
 }
 
 #TODO return type is weird
-addHashes <- function(pkgs, mirror, mode="nix"){ #TODO should pkgs and mirror really be separate?
+addHashes <- function(pkgs, mirror, mode){ #TODO should pkgs and mirror really be separate?
   write(paste("updating", mirror$name, "packages"), stderr())
 
-  cacheFetcher <- if (mode == "nix"){ nixfetchcached } else { jsonprefetchcached } #TODO i really dont understand what the cache fetcher is supposed to be for, its not like it updates an outdate entry or anything !?
+  cacheFetcher <- if (mode == "nix"){ nixfetchcached } else { jsonfetchcached } #TODO i really dont understand what the cache fetcher is supposed to be for, its not like it updates an outdate entry or anything !?
   packagesFile <- sprintf("%s-packages.%s", mirror$name, mode)
   
   lambda <- function(p) {
